@@ -16,12 +16,16 @@ class Knight : public Piece
 {
 public:
 
+    Knight(Square& location, string color);
+
     int getValue();
 
     /**
      * @param location
      */
     bool canMoveTo(Square& location);
+
+    void display(ostream& os);
 };
 
 #endif //_KNIGHT_H

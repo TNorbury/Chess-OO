@@ -14,12 +14,16 @@ class Rook : public RestrictedPiece
 {
 public:
 
+    Rook(Square& location, string color);
+
     int getValue();
 
     /**
      * @param location
      */
     bool canMoveTo(Square& location);
+
+    void display(ostream& os);
 };
 
 #endif //_ROOK_H

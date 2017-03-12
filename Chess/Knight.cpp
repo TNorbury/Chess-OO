@@ -11,8 +11,18 @@
   * Knight implementation
   */
 
-
   /**
+   * Create a new Rook at the given square and for the specified color
+   * @param location The square that the rook will set on
+   * @param color The color of the piece
+   */
+Knight::Knight(Square & location, string color)
+{
+    _location = &location;
+    _color = color;
+}
+
+/**
    * @return int
    */
 int Knight::getValue()
@@ -27,4 +37,8 @@ int Knight::getValue()
 bool Knight::canMoveTo(Square& location)
 {
     return false;
+}
+
+void Knight::display(ostream & os)
+{
 }

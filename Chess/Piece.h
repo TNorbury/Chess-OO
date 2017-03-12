@@ -48,9 +48,9 @@ public:
      * @param os
      */
     virtual void display(ostream& os);
-private:
-    string color;
-    Square* location;
+protected:
+    string _color;
+    Square* _location;
 };
 
 #endif //_PIECE_H

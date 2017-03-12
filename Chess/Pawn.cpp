@@ -12,8 +12,18 @@
   * Pawn implementation
   */
 
-
   /**
+   * Create a new Pawn at the given square and for the specified color
+   * @param location The square that the Pawn will set on
+   * @param color The color of the piece
+   */
+Pawn::Pawn(Square & location, string color)
+{
+    _location = &location;
+    _color = color;
+}
+
+/**
    * @return int
    */
 int Pawn::getValue()

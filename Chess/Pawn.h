@@ -16,6 +16,8 @@ class Pawn : public RestrictedPiece
 {
 public:
 
+    Pawn(Square& location, string color);
+
     int getValue();
 
     /**

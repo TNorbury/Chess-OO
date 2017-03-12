@@ -26,7 +26,7 @@ int Piece::getValue()
  */
 string Piece::getColor()
 {
-    return "";
+    return _color;
 }
 
 /**
@@ -34,7 +34,7 @@ string Piece::getColor()
  */
 Square& Piece::getLocation()
 {
-    return *location;
+    return *_location;
 }
 
 /**
@@ -42,7 +42,7 @@ Square& Piece::getLocation()
  */
 void Piece::setLocation(Square* location)
 {
-
+    _location = location;
 }
 
 /**

@@ -26,6 +26,8 @@ int main()
 void Game::initialize()
 {
     // Start by placing all the necessary pieces on the board.
+    // Start with the black pieces, then do the white pieces.
+    PlaceBlackPieces(_board);
 }
 
 /**
@@ -49,6 +51,7 @@ Player& Game::getOpponentOf(Player& player)
 
 void Game::PlaceBlackPieces(Board & board)
 {
+
 }
 
 void Game::PlaceWhitePieces(Board & board)

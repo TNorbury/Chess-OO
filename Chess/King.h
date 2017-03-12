@@ -16,12 +16,16 @@ class King : public RestrictedPiece
 {
 public:
 
+    King(Square& location, string color);
+
     int getValue();
 
     /**
      * @param location
      */
     bool canMoveTo(Square& location);
+
+    void display(ostream& os);
 };
 
 #endif //_KING_H
