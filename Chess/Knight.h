@@ -1,9 +1,3 @@
-/**
- * Project Chess
- * @author Brian R. Snider
- */
-
-
 #ifndef _KNIGHT_H
 #define _KNIGHT_H
 

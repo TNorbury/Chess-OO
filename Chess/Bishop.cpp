@@ -1,9 +1,3 @@
-/**
- * Project Chess
- * @author Brian R. Snider
- */
-
-
 #include "Bishop.h"
 #include "Square.h"
 

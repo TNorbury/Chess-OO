@@ -1,9 +1,3 @@
-/**
- * Project Chess
- * @author Brian R. Snider
- */
-
-
 #include "King.h"
 #include "Square.h"
 

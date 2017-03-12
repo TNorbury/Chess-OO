@@ -1,9 +1,3 @@
-/**
- * Project Chess
- * @author Brian R. Snider
- */
-
-
 #ifndef _PIECE_H
 #define _PIECE_H
 

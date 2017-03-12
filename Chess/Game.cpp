@@ -1,9 +1,3 @@
-/**
- * Project Chess
- * @author Brian R. Snider
- */
-
-
 #include <iostream>
 #include "Game.h"
 #include "Player.h"
@@ -15,12 +9,6 @@
 
 Player Game::_player[2];
 Board& Game::_board = Board::getInstance();
-
-int main()
-{
-    // Initialize the game to start off with
-    Game::initialize();
-}
 
 
 void Game::initialize()

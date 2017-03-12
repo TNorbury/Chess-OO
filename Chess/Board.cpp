@@ -1,8 +1,3 @@
-/**
- * Project Chess
- * @author Brian R. Snider
- */
-
 #include <iostream>
 #include "Board.h"
 #include "Square.h"

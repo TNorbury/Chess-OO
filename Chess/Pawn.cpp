@@ -1,9 +1,3 @@
-/**
- * Project Chess
- * @author Brian R. Snider
- */
-
-
 #include <iostream>
 #include "Pawn.h"
 #include "Square.h"

@@ -1,8 +1,3 @@
-/**
- * Project Chess
- * @author Brian R. Snider
- */
-
 #include <set>
 #include <string>
 #include "Player.h"

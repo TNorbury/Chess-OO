@@ -1,9 +1,3 @@
-/**
- * Project Chess
- * @author Brian R. Snider
- */
-
-
 #ifndef _BOARD_H
 #define _BOARD_H
 

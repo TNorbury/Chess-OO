@@ -1,9 +1,3 @@
-/**
- * Project Chess
- * @author Brian R. Snider
- */
-
-
 #include "RestrictedPiece.h"
 #include "Square.h"
 #include "Player.h"
