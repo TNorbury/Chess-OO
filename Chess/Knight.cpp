@@ -5,11 +5,6 @@
   * Knight implementation
   */
 
-  /**
-   * Create a new Rook at the given square and for the specified color
-   * @param location The square that the rook will set on
-   * @param color The color of the piece
-   */
 Knight::Knight(Square & location, string color)
 {
     _location = &location;
@@ -38,4 +33,13 @@ bool Knight::canMoveTo(Square& location)
 
 void Knight::display(ostream & os)
 {
+    // Print out something different depending on the color of the piece
+    if (_color == "White")
+    {
+        os << "WN";
+    }
+    else
+    {
+        os << "BN";
+    }
 }

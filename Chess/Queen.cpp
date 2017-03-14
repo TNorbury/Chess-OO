@@ -5,11 +5,7 @@
   * Queen implementation
   */
 
-  /**
-   * Create a new Queen at the given square and for the specified color
-   * @param location The square that the Queen will set on
-   * @param color The color of the piece
-   */
+
 Queen::Queen(Square & location, string color)
 {
     _location = &location;
@@ -38,4 +34,13 @@ bool Queen::canMoveTo(Square& location)
 
 void Queen::display(ostream & os)
 {
+    // Print out something different depending on the color of the piece
+    if (_color == "White")
+    {
+        os << "WQ";
+    }
+    else
+    {
+        os << "BQ";
+    }
 }

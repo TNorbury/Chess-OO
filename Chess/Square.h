@@ -27,12 +27,12 @@ public:
      */
     void setOccupant(Piece* occupant);
 
-    Square();
 
+    Square();
 private:
-    int rank;
-    int file;
-    Piece* occupant;
+    int _rank;
+    int _file;
+    Piece* _occupant;
 };
 
 #endif //_SQUARE_H

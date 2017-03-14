@@ -7,7 +7,7 @@
 
   /**
    * Create a new Rook at the given square and for the specified color
-   * @param location The square that the rook will set on
+   * @param location The square that the rook will sit on
    * @param color The color of the piece
    */
 Rook::Rook(Square& location, string color)
@@ -38,4 +38,13 @@ bool Rook::canMoveTo(Square& location)
 
 void Rook::display(ostream & os)
 {
+    // Print out something different depending on the color of the piece
+    if (_color == "White")
+    {
+        os << "WR";
+    }
+    else
+    {
+        os << "BR";
+    }
 }

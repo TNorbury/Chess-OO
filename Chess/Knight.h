@@ -10,6 +10,11 @@ class Knight : public Piece
 {
 public:
 
+    /**
+     * Create a new Knight at the given square and for the specified color
+     * @param location The square that the knight will sit on
+     * @param color The color of the piece
+     */
     Knight(Square& location, string color);
 
     int getValue();
@@ -19,6 +24,10 @@ public:
      */
     bool canMoveTo(Square& location);
 
+    /**
+     * Prints out the Knight
+     * @param os The ostream that the Knight should be printed to.
+     */
     void display(ostream& os);
 };
 

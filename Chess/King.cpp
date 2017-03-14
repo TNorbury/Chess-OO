@@ -5,11 +5,7 @@
   * King implementation
   */
 
-  /**
-   * Create a new King at the given square and for the specified color
-   * @param location The square that the King will set on
-   * @param color The color of the piece
-   */
+
 King::King(Square & location, string color)
 {
     _location = &location;
@@ -38,4 +34,13 @@ bool King::canMoveTo(Square& location)
 
 void King::display(ostream & os)
 {
+    // Print out something different depending on the color of the piece
+    if (_color == "White")
+    {
+        os << "WK";
+    }
+    else
+    {
+        os << "BK";
+    }
 }

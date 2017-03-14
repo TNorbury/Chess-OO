@@ -6,11 +6,7 @@
   * Pawn implementation
   */
 
-  /**
-   * Create a new Pawn at the given square and for the specified color
-   * @param location The square that the Pawn will set on
-   * @param color The color of the piece
-   */
+
 Pawn::Pawn(Square & location, string color)
 {
     _location = &location;
@@ -42,5 +38,13 @@ bool Pawn::canMoveTo(Square& location)
  */
 void Pawn::display(ostream& os)
 {
-
+    // Print out something different depending on the color of the piece
+    if (_color == "White")
+    {
+        os << "WP";
+    }
+    else
+    {
+        os << "BP";
+    }
 }

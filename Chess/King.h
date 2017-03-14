@@ -10,6 +10,11 @@ class King : public RestrictedPiece
 {
 public:
 
+    /**
+     * Create a new King at the given square and for the specified color
+     * @param location The square that the King will sit on
+     * @param color The color of the piece
+     */
     King(Square& location, string color);
 
     int getValue();
@@ -19,6 +24,10 @@ public:
      */
     bool canMoveTo(Square& location);
 
+    /**
+     * Prints out the King
+     * @param os The ostream that the King should be printed to.
+     */
     void display(ostream& os);
 };
 

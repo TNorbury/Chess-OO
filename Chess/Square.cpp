@@ -12,7 +12,8 @@
    */
 Square::Square(int rank, int file)
 {
-
+    _rank = rank;
+    _file = file;
 }
 
 /**
@@ -20,7 +21,7 @@ Square::Square(int rank, int file)
  */
 int Square::getRank()
 {
-    return rank;
+    return _rank;
 }
 
 /**
@@ -28,7 +29,7 @@ int Square::getRank()
  */
 int Square::getFile()
 {
-    return file;
+    return _file;
 }
 
 /**
@@ -36,7 +37,7 @@ int Square::getFile()
  */
 bool Square::isOccupied()
 {
-    return false;
+    return (_occupant != NULL);
 }
 
 /**
@@ -44,7 +45,7 @@ bool Square::isOccupied()
  */
 Piece& Square::getOccupant()
 {
-    return *occupant;
+    return *_occupant;
 }
 
 /**
@@ -52,7 +53,7 @@ Piece& Square::getOccupant()
  */
 void Square::setOccupant(Piece* occupant)
 {
-
+    _occupant = occupant;
 }
 
  Square::Square()

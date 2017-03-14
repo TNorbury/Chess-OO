@@ -5,11 +5,7 @@
   * Bishop implementation
   */
 
-  /**
-   * Create a new King at the given square and for the specified color
-   * @param location The square that the King will set on
-   * @param color The color of the piece
-   */
+
 Bishop::Bishop(Square & location, string color)
 {
     _location = &location;
@@ -38,4 +34,12 @@ bool Bishop::canMoveTo(Square& location)
 
 void Bishop::display(ostream & os)
 {
+    if (_color == "White")
+    {
+        os << "WB";
+    }
+    else
+    {
+        os << "BB";
+    }
 }

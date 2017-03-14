@@ -35,6 +35,9 @@ void Game::initialize()
     _player[BLACK] = new Player("Black", blackKing, _blackPieces);
 
     // Have the board display itself
+    _board.display(cout);
+
+    cout << "" << endl;
 }
 
 /**
@@ -116,7 +119,7 @@ King& Game::PlaceWhitePieces(Board & board)
     // Iterate over the files for the second rank
     for (int i = 0; i < board.getDimensions(); i++)
     {
-        _whitePieces.insert(new Pawn(board.getSquareAt(ONE, i), "White"));
+        _whitePieces.insert(new Pawn(board.getSquareAt(TWO, i), "White"));
     }
 
     return *whiteKing;
