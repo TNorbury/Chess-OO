@@ -2,7 +2,7 @@
 #define _BOARD_H
 
 #define FILE "      a    b    c    d    e    f    g    h    "
-#define BOARD_LINE "   -----------------------------------------  "
+#define BOARD_LINE "   +----+----+----+----+----+----+----+----+  "
 
 #include <iostream>
 #include "Square.h"
