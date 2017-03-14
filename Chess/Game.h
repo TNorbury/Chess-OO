@@ -34,16 +34,28 @@ class Game
 {
 public:
 
+    /**
+     * Set up a new game of chess.
+     */
     static void initialize();
 
+    /**
+     * Gets the player that is supposed to go next.
+     */
     static Player& getNextPlayer();
 
     /**
+     * Gets the opponent of the given player
      * @param player
      */
     static Player& getOpponentOf(Player& player);
 
 private:
+    static Player* _player[2];
+    static int _currentPlayer;
+    static Board& _board;
+    static set<Piece*> _whitePieces;
+    static set<Piece*> _blackPieces;
 
     /**
      * Places all of the black pieces on the board in their initial state
@@ -62,11 +74,6 @@ private:
      * @return The white King
      */
     static King& PlaceWhitePieces(Board& board);
-    static Player* _player[2];
-    static int _currentPlayer;
-    static Board& _board;
-    static set<Piece*> _whitePieces;
-    static set<Piece*> _blackPieces;
 };
 
 #endif //_GAME_H
