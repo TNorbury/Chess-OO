@@ -16,14 +16,11 @@ Player* Game::_player[2];
 Board& Game::_board = Board::getInstance();
 set<Piece*> Game::_blackPieces;
 set<Piece*> Game::_whitePieces;
+int Game::_currentPlayer;
 
 
 void Game::initialize()
 {
-    // Initialize the player array and the game board.
-    _player[2];
-    _board = Board::getInstance();
-
     // Start by placing all the necessary pieces on the board.
     // Start with the black pieces, then do the white pieces.
     King blackKing = PlaceBlackPieces(_board);
@@ -37,27 +34,40 @@ void Game::initialize()
     // Have the board display itself
     _board.display(cout);
 
-    cout << "" << endl;
+    // Start off with the current player being the white player
+    _currentPlayer = WHITE;
 }
 
-/**
- * @return Player&
- */
+
 Player& Game::getNextPlayer()
 {
-    // Eventually return the next player
-    return *_player[0];
+    // Make sure _currentPlayer doesn't get bigger than 1
+    _currentPlayer = _currentPlayer % 2;
+
+    // The next player is the opponent of the current player
+    return getOpponentOf(*_player[_currentPlayer++]);
 }
 
-/**
- * @param player
- * @return Player&
- */
+
 Player& Game::getOpponentOf(Player& player)
 {
-    // Eventually return the opponent, for now just return the first player
-    return *_player[0];
+    Player* opponent;
+
+    // If the current player is white, then the opponent is black
+    if (player.getName() == _player[WHITE]->getName())
+    {
+        opponent = _player[BLACK];
+    }
+
+    //Otherwise, the opponent is white
+    else
+    {
+        opponent = _player[WHITE];
+    }
+
+    return *opponent;
 }
+
 
 King& Game::PlaceBlackPieces(Board & board)
 {

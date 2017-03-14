@@ -7,14 +7,14 @@
  * Board implementation
  */
 
-Board& Board::instance = *(new Board());
+Board& Board::_instance = *(new Board());
 
 /**
  * @return Board&
  */
 Board& Board::getInstance()
 {
-    return instance;
+    return _instance;
 }
 
 int Board::getDimensions()
@@ -25,7 +25,7 @@ int Board::getDimensions()
 
 Square& Board::getSquareAt(int rank, int file)
 {
-    return boardSquares[rank][file];
+    return _boardSquares[rank][file];
 }
 
 /**
@@ -115,7 +115,7 @@ Board::Board()
     {
         for (int j = 0; j < DIMENSION; j++)
         {
-            boardSquares[i][j] = *(new Square(i, j));
+            _boardSquares[i][j] = *(new Square(i, j));
         }
     }
 }
