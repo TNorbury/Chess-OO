@@ -41,11 +41,8 @@ void Game::initialize()
 
 Player& Game::getNextPlayer()
 {
-    // Make sure _currentPlayer doesn't get bigger than 1
-    _currentPlayer = _currentPlayer % 2;
-
     // The next player is the opponent of the current player
-    return getOpponentOf(*_player[_currentPlayer++]);
+    return getOpponentOf(*_player[_currentPlayer = _currentPlayer++ % 2]);
 }
 
 
