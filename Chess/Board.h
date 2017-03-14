@@ -21,8 +21,9 @@ public:
     static int getDimensions();
 
     /**
-     * @param rank
-     * @param file
+     * @param rank The rank (row) of the square
+     * @param file The file (column) of the square
+     * @return Square& A pointer to the square at the given rank and file
      */
     Square& getSquareAt(int rank, int file);
 
@@ -50,8 +51,8 @@ public:
     void display(ostream& os);
 private:
     static const int DIMENSION = 8;
-    static Board& instance;
-    Square boardSquares[8][8];
+    static Board& _instance;
+    Square _boardSquares[8][8];
     Board();
 };
 
