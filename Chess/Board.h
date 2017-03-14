@@ -10,7 +10,12 @@ class Board
 {
 public:
 
+    /**
+     * @return the current board instance
+     */
     static Board& getInstance();
+
+    static int getDimensions();
 
     /**
      * @param rank
@@ -41,7 +46,7 @@ public:
      */
     void display(ostream& os);
 private:
-    int DIMENSION = 8;
+    static const int DIMENSION = 8;
     static Board& instance;
     Square boardSquares[8][8];
     Board();

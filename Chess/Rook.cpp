@@ -14,6 +14,9 @@ Rook::Rook(Square& location, string color)
 {
     _location = &location;
     _color = color;
+
+    // Tell the square that it's now occupied
+    _location->setOccupant(this);
 }
 
 /**

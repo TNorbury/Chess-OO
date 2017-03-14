@@ -36,10 +36,10 @@ public:
 
     Player();
 private:
-    string name;
-    King* king;
-    set<Piece*> pieces;
-    set<Piece*> capturedPieces;
+    string _name;
+    King* _king;
+    set<Piece*> _pieces;
+    set<Piece*> _capturedPieces;
 };
 
 #endif //_PLAYER_H

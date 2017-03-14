@@ -10,13 +10,15 @@
 
 
   /**
-   * @param name
-   * @param king
-   * @param pieces
+   * @param name The Player's name
+   * @param king The player's king
+   * @param pieces The set of pieces owned by this player
    */
 Player::Player(string name, King& king, set<Piece*>& pieces)
 {
-
+    _name = name;
+    _king = &king;
+    _pieces = pieces;
 }
 
 /**
@@ -24,7 +26,7 @@ Player::Player(string name, King& king, set<Piece*>& pieces)
  */
 string Player::getName()
 {
-    return "";
+    return _name;
 }
 
 /**
@@ -32,7 +34,7 @@ string Player::getName()
  */
 King& Player::getKing()
 {
-    return *king;
+    return *_king;
 }
 
 /**
@@ -40,7 +42,7 @@ King& Player::getKing()
  */
 set<Piece*>& Player::getPieces()
 {
-    return pieces;
+    return _pieces;
 }
 
 /**

@@ -6,14 +6,20 @@
   * Board implementation
   */
 
-Board& Board::instance = (Board().getInstance());
+Board& Board::instance = Board();
 
   /**
    * @return Board&
    */
 Board& Board::getInstance()
 {
+    Board();
     return instance;
+}
+
+int Board::getDimensions()
+{
+    return Board::DIMENSION;
 }
 
 /**
@@ -67,6 +73,8 @@ void Board::display(ostream& os)
 
 Board::Board()
 {
+    boardSquares[DIMENSION][DIMENSION];
+
     for (int i = 0; i < DIMENSION; i++)
     {
         for (int j = 0; j < DIMENSION; j++)
