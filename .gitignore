@@ -70,6 +70,7 @@ artifacts/
 *.vcxproj.filters
 *.out
 *.sln
+*.zip
 
 # Chutzpah Test files
 _Chutzpah*
