@@ -17,6 +17,9 @@ public:
      */
     King(Square& location, string color);
 
+    /**
+     * @return the value of the piece
+     */
     int getValue();
 
     /**

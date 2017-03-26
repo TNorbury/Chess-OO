@@ -15,18 +15,13 @@ Queen::Queen(Square & location, string color)
     _location->setOccupant(this);
 }
 
-/**
-   * @return int
-   */
+
 int Queen::getValue()
 {
     return 0;
 }
 
-/**
- * @param location
- * @return bool
- */
+
 bool Queen::canMoveTo(Square& location)
 {
     return false;

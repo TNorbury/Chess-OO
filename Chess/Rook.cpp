@@ -5,11 +5,7 @@
   * Rook implementation
   */
 
-  /**
-   * Create a new Rook at the given square and for the specified color
-   * @param location The square that the rook will sit on
-   * @param color The color of the piece
-   */
+
 Rook::Rook(Square& location, string color)
 {
     _location = &location;
@@ -19,18 +15,13 @@ Rook::Rook(Square& location, string color)
     _location->setOccupant(this);
 }
 
-/**
-   * @return int
-   */
+
 int Rook::getValue()
 {
     return 0;
 }
 
-/**
- * @param location
- * @return bool
- */
+
 bool Rook::canMoveTo(Square& location)
 {
     return false;

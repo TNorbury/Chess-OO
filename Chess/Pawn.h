@@ -17,10 +17,15 @@ public:
      */
     Pawn(Square& location, string color);
 
+    /**
+     * @return the value of the piece
+     */
     int getValue();
 
     /**
-     * @param location
+     * Checks if the piece can move to the given square
+     * @param location The square that the piece is checking if it can move to
+     * @return true, if the piece can move to the given square, otherwise false
      */
     bool canMoveTo(Square& location);
 
@@ -32,6 +37,14 @@ public:
 
 private:
     Piece* delegate;
+
+    // Since a pawn's movement is based upon its color, the rank movement needs
+    // to be either positive (black) or negative (white) to ensure that the
+    // pawn moves in the right direction
+    int _rankModifier;
+
+    bool checkDiagonal(int rank, int file, Square& location);
+    bool checkFront(int rank, int file, Square& location);
 };
 
 #endif //_PAWN_H

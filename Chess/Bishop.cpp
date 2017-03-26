@@ -15,18 +15,13 @@ Bishop::Bishop(Square & location, string color)
     _location->setOccupant(this);
 }
 
-/**
-   * @return int
-   */
+
 int Bishop::getValue()
 {
     return 0;
 }
 
-/**
- * @param location
- * @return bool
- */
+
 bool Bishop::canMoveTo(Square& location)
 {
     return false;

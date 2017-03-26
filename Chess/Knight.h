@@ -16,7 +16,10 @@ public:
      * @param color The color of the piece
      */
     Knight(Square& location, string color);
-
+    
+    /**
+     * @return the value of the piece
+     */
     int getValue();
 
     /**

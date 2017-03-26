@@ -14,32 +14,49 @@ class Piece
 {
 public:
 
+    /**
+     * @return the value of the piece
+     */
     virtual int getValue();
 
+    /**
+     * @return The piece's color
+     */
     string getColor();
 
+    /**
+     * @return the piece's location
+     */
     Square& getLocation();
 
     /**
-     * @param location
+     * Set the location of the piece to the given square
+     * @param location The piece's new location
      */
     void setLocation(Square* location);
 
+    /**
+     * @return If the piece is currently on a square (i.e. in play)
+     */
     bool isOnSquare();
 
     /**
-     * @param location
+     * Checks if the piece can move to the given square
+     * @param location The square that the piece is checking if it can move to
+     * @return true, if the piece can move to the given square, otherwise false
      */
     virtual bool canMoveTo(Square& location);
 
     /**
-     * @param location
-     * @param byPlayer
+     * Move the piece to the given location 
+     * @param location The location to be moved to
+     * @param byPlayer The player making the move
      */
-    bool moveTo(Square& location, Player& byPlayer);
+    virtual bool moveTo(Square& location, Player& byPlayer);
 
     /**
-     * @param os
+     * Prints out the piece
+     * @param os The ostream that the piece will be output to.
      */
     virtual void display(ostream& os);
 protected:

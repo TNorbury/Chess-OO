@@ -39,6 +39,7 @@ public:
      */
     static void initialize();
 
+
     /**
      * Gets the player that is supposed to go next.
      */
@@ -50,29 +51,21 @@ public:
      */
     static Player& getOpponentOf(Player& player);
 
+    /**
+     * Gets the current player
+     * @return The current player
+     */
+    static Player* getCurrentPlayer();
+
 private:
-    static Player* _player[2];
-    static int _currentPlayer;
+    static Player* _white;
+    static Player* _black;
+    static Player* _currentPlayer;
     static Board& _board;
     static set<Piece*> _whitePieces;
     static set<Piece*> _blackPieces;
 
-    /**
-     * Places all of the black pieces on the board in their initial state
-     *
-     * @param board The board where the pieces will be placed
-     *
-     * @return The black King
-     */
     static King& PlaceBlackPieces(Board& board);
-
-    /**
-     * Places all of the white pieces on the board in their initial state
-     *
-     * @param board The board where the pieces will be placed
-     *
-     * @return The white King
-     */
     static King& PlaceWhitePieces(Board& board);
 };
 

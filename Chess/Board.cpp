@@ -7,19 +7,37 @@
  * Board implementation
  */
 
+// Initialize the board
 Board& Board::_instance = *(new Board());
 
-/**
- * @return Board&
- */
+Board::Board()
+{
+    for (int i = 0; i < DIMENSION; i++)
+    {
+        for (int j = 0; j < DIMENSION; j++)
+        {
+            _boardSquares[i][j] = *(new Square(i, j));
+        }
+    }
+}
+
+
 Board& Board::getInstance()
 {
     return _instance;
 }
 
+
 int Board::getDimensions()
 {
     return Board::DIMENSION;
+}
+
+
+bool Board::inBounds(int rank, int file)
+{
+    return ((rank >= 0) && (rank < DIMENSION) && (file >= 0) 
+        && (file < DIMENSION));
 }
 
 
@@ -28,35 +46,27 @@ Square& Board::getSquareAt(int rank, int file)
     return _boardSquares[rank][file];
 }
 
-/**
- * @param from
- * @param to
- * @return bool
- */
+
+
 bool Board::isClearRank(Square& from, Square& to)
 {
     return false;
 }
 
-/**
- * @param from
- * @param to
- * @return bool
- */
+
+
 bool Board::isClearFile(Square& from, Square& to)
 {
     return false;
 }
 
-/**
- * @param from
- * @param to
- * @return bool
- */
+
+
 bool Board::isClearDiagonal(Square& from, Square& to)
 {
     return false;
 }
+
 
 /**
  * @param os
@@ -85,7 +95,6 @@ void Board::display(ostream& os)
             if (getSquareAt(i, j).isOccupied())
             {
                 getSquareAt(i, j).getOccupant().display(os);
-                //os << "PC";
             }
 
             // Otherwise, just print whitespace
@@ -94,6 +103,7 @@ void Board::display(ostream& os)
                 os << "  ";
             }
 
+            // Print the vertical bar on the right hand side of the square.
             os << " |";
         }
 
@@ -109,13 +119,3 @@ void Board::display(ostream& os)
 }
 
 
-Board::Board()
-{
-    for (int i = 0; i < DIMENSION; i++)
-    {
-        for (int j = 0; j < DIMENSION; j++)
-        {
-            _boardSquares[i][j] = *(new Square(i, j));
-        }
-    }
-}

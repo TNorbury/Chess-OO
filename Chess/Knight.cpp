@@ -1,9 +1,9 @@
 #include "Knight.h"
 #include "Square.h"
 
- /**
-  * Knight implementation
-  */
+/**
+ * Knight implementation
+ */
 
 Knight::Knight(Square & location, string color)
 {
@@ -14,18 +14,13 @@ Knight::Knight(Square & location, string color)
     _location->setOccupant(this);
 }
 
-/**
-   * @return int
-   */
+
 int Knight::getValue()
 {
     return 0;
 }
 
-/**
- * @param location
- * @return bool
- */
+
 bool Knight::canMoveTo(Square& location)
 {
     return false;

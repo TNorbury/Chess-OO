@@ -15,18 +15,13 @@ King::King(Square & location, string color)
     _location->setOccupant(this);
 }
 
-/**
-   * @return int
-   */
+
 int King::getValue()
 {
     return 0;
 }
 
-/**
- * @param location
- * @return bool
- */
+
 bool King::canMoveTo(Square& location)
 {
     return false;

@@ -10,15 +10,19 @@ class RestrictedPiece : public Piece
 public:
 
     /**
-     * @param location
-     * @param byPlayer
+     * Move the piece to the given location
+     * @param location The location to be moved to
+     * @param byPlayer The player making the move
      */
     virtual bool moveTo(Square& location, Player& byPlayer);
 protected:
 
+    /**
+     * @return true, if this piece has moved. Otherwise false
+     */
     bool hasMoved();
 private:
-    bool moved = false;
+    bool _moved = false;
 };
 
 #endif //_RESTRICTEDPIECE_H

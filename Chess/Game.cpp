@@ -12,11 +12,12 @@
  * Game implementation
  */
 
-Player* Game::_player[2];
+Player* Game::_white = new Player();
+Player* Game::_black = new Player();
+Player* Game::_currentPlayer = new Player();
 Board& Game::_board = Board::getInstance();
 set<Piece*> Game::_blackPieces;
 set<Piece*> Game::_whitePieces;
-int Game::_currentPlayer;
 
 
 void Game::initialize()
@@ -28,21 +29,23 @@ void Game::initialize()
 
     // Now create the two players, they'll just be named white and black for 
     // now
-    _player[WHITE] = new Player("White", whiteKing, _whitePieces);
-    _player[BLACK] = new Player("Black", blackKing, _blackPieces);
+    delete _white;
+    delete _black;
+    _white = new Player("White", whiteKing, _whitePieces);
+    _black = new Player("Black", blackKing, _blackPieces);
 
     // Have the board display itself
     _board.display(cout);
 
     // Start off with the current player being the white player
-    _currentPlayer = WHITE;
+    _currentPlayer = _white;
 }
 
 
 Player& Game::getNextPlayer()
 {
-    // The next player is the opponent of the current player
-    return getOpponentOf(*_player[_currentPlayer = _currentPlayer++ % 2]);
+    _currentPlayer = &getOpponentOf(*_currentPlayer);
+    return *_currentPlayer;
 }
 
 
@@ -51,21 +54,32 @@ Player& Game::getOpponentOf(Player& player)
     Player* opponent;
 
     // If the current player is white, then the opponent is black
-    if (player.getName() == _player[WHITE]->getName())
+    if (player.getName() == _white->getName())
     {
-        opponent = _player[BLACK];
+        opponent = _black;
     }
 
     //Otherwise, the opponent is white
     else
     {
-        opponent = _player[WHITE];
+        opponent = _white;
     }
 
     return *opponent;
 }
 
+Player* Game::getCurrentPlayer()
+{
+    return _currentPlayer;
+}
 
+/**
+ * Places all of the black pieces on the board in their initial state
+ *
+ * @param board The board where the pieces will be placed
+ *
+ * @return The black King
+ */
 King& Game::PlaceBlackPieces(Board & board)
 {
     // Start by creating the black king and adding it to the set of black 
@@ -99,6 +113,13 @@ King& Game::PlaceBlackPieces(Board & board)
     return *blackKing;
 }
 
+/**
+ * Places all of the white pieces on the board in their initial state
+ *
+ * @param board The board where the pieces will be placed
+ *
+ * @return The white King
+ */
 King& Game::PlaceWhitePieces(Board & board)
 {
     // Start by creating the white king and adding it to the set of the white 
