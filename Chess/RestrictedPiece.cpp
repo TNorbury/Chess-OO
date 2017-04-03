@@ -32,8 +32,6 @@ bool RestrictedPiece::moveTo(Square& location, Player& byPlayer)
     setLocation(toMoveTo);
 
     // Move the piece to its new location on the board
-    //Board::getInstance().getSquareAt(location.getRank(), location.getFile())
-    //    .setOccupant(this);
     toMoveTo->setOccupant(this);
 
     // Now that this piece has moved, set the flag.
