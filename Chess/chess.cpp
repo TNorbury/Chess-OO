@@ -12,6 +12,7 @@ int main()
 {
     // When one of the two kings is checkmated/captured, then the game is over.
     bool gameOver = false;
+    int moveCounter = 0;
 
     // Initialize the game
     Game::initialize();
@@ -34,6 +35,12 @@ int main()
         // Since a piece was moved on the board, display it again to reflect 
         // the changes
         Board::getInstance().display(cout);
+        
+        // If 10 moves have been played, then end the game
+        if (++moveCounter == 10)
+        {
+            gameOver = true;
+        }
 
         // Now get the next player
         currentPlayer = &Game::getNextPlayer();
