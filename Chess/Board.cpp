@@ -48,21 +48,21 @@ Square* Board::getSquareAt(int rank, int file)
 
 
 
-bool Board::isClearRank(Square& from, Square& to)
+bool Board::isClearRank(Square* from, Square* to)
 {
     return false;
 }
 
 
 
-bool Board::isClearFile(Square& from, Square& to)
+bool Board::isClearFile(Square* from, Square* to)
 {
     return false;
 }
 
 
 
-bool Board::isClearDiagonal(Square& from, Square& to)
+bool Board::isClearDiagonal(Square* from, Square* to)
 {
     return false;
 }

@@ -42,7 +42,7 @@ public:
      * @param to The ending square
      * @return True if it's clear
      */
-    bool isClearRank(Square& from, Square& to);
+    bool isClearRank(Square* from, Square* to);
 
     /**
      * Check if the board is clear from one square to another, in the file
@@ -51,7 +51,7 @@ public:
      * @param to The ending square
      * @return True if it's clear
      */
-    bool isClearFile(Square& from, Square& to);
+    bool isClearFile(Square* from, Square* to);
 
     /**
      * Check if the board is clear from one square to another, in the diagonal
@@ -60,7 +60,7 @@ public:
      * @param to The ending square
      * @return True if it's clear
      */
-    bool isClearDiagonal(Square& from, Square& to);
+    bool isClearDiagonal(Square* from, Square* to);
 
 
     /**
