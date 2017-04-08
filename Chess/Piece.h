@@ -3,6 +3,8 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
+#include <utility>
 class Square;
 class Player;
 
@@ -17,7 +19,7 @@ public:
     /**
      * @return the value of the piece
      */
-    virtual int getValue();
+    virtual int getValue() = 0;
 
     /**
      * @return The piece's color
@@ -27,7 +29,7 @@ public:
     /**
      * @return the piece's location
      */
-    Square& getLocation();
+    Square* getLocation();
 
     /**
      * Set the location of the piece to the given square
@@ -48,7 +50,7 @@ public:
     virtual bool canMoveTo(Square* location);
 
     /**
-     * Move the piece to the given location 
+     * Move the piece to the given location
      * @param location The location to be moved to
      * @param byPlayer The player making the move
      */
@@ -58,10 +60,14 @@ public:
      * Prints out the piece
      * @param os The ostream that the piece will be output to.
      */
-    virtual void display(ostream& os);
+    virtual void display(ostream& os) = 0;
 protected:
     string _color;
     Square* _location;
+    vector<pair<int, int>> _movementOffsets;
+
+    virtual vector<pair<int, int>>& getMovementOffsets();
+    bool checkSquare(int rank, int file, Square* toMoveTo);
 };
 
 #endif //_PIECE_H

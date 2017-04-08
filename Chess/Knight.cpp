@@ -5,6 +5,12 @@
  * Knight implementation
  */
 
+ // From the knight's current location, these are the rank/file offsets of the 
+ // squares that the knight can move to.
+vector<pair<int, int>> Knight::_movementOffsets = { {-2, -1}, {-2, 1},
+{-1, -2}, {-1, 2}, {1, -2}, {1, 2}, {2, -1}, {2, 1} };
+
+
 Knight::Knight(Square* location, string color)
 {
     _location = location;
@@ -12,6 +18,8 @@ Knight::Knight(Square* location, string color)
 
     // Tell the square that it's now occupied
     _location->setOccupant(this);
+
+
 }
 
 
@@ -20,11 +28,6 @@ int Knight::getValue()
     return 0;
 }
 
-
-bool Knight::canMoveTo(Square* location)
-{
-    return false;
-}
 
 void Knight::display(ostream & os)
 {
@@ -37,4 +40,9 @@ void Knight::display(ostream & os)
     {
         os << "BN";
     }
+}
+
+vector<pair<int, int>>& Knight::getMovementOffsets()
+{
+    return _movementOffsets;
 }

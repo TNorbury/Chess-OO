@@ -16,7 +16,7 @@ Board::Board()
     {
         for (int j = 0; j < DIMENSION; j++)
         {
-            _boardSquares[i][j] = *(new Square(i, j));
+            _boardSquares[i][j] = (new Square(i, j));
         }
     }
 }
@@ -43,7 +43,7 @@ bool Board::inBounds(int rank, int file)
 
 Square* Board::getSquareAt(int rank, int file)
 {
-    return &_boardSquares[rank][file];
+    return _boardSquares[rank][file];
 }
 
 

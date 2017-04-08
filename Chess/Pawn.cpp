@@ -49,7 +49,8 @@ bool Pawn::canMoveTo(Square* location)
     // Only check the diagonal if the pawn hasn't found a square to move to
     if (!canMoveTo)
     {
-        // Start by checking the left (if white, otherwise it's the right) diagonal
+        // Start by checking the left (if white, otherwise it's the right) 
+        // diagonal
         rank = _location->getRank() + (1 * _rankModifier);
         file = _location->getFile() - 1;
         canMoveTo = checkDiagonal(rank, file, location);

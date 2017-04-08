@@ -2,7 +2,6 @@
 #define _KING_H
 
 #include "RestrictedPiece.h"
-//#include "Square.h"
 class Square;
 
 
@@ -32,6 +31,15 @@ public:
      * @param os The ostream that the King should be printed to.
      */
     void display(ostream& os);
+
+    /**
+     * @return A vector of the pairs of rank,file offsets that the king can 
+     * move to
+     */
+    vector<pair<int, int>>& getMovementOffsets();
+
+private:
+    static vector<pair<int, int>> _movementOffsets;
 };
 
 #endif //_KING_H

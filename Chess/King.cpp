@@ -1,10 +1,14 @@
 #include "King.h"
 #include "Square.h"
 
- /**
-  * King implementation
-  */
+/**
+ * King implementation
+ */
 
+ // From the king's current location, these are the rank/file offsets of the 
+ // squares that the king can move to.
+vector<pair<int, int>> King::_movementOffsets = { {-1, -1}, {-1, 0}, {-1, 1},
+{0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1} };
 
 King::King(Square* location, string color)
 {
@@ -38,4 +42,9 @@ void King::display(ostream & os)
     {
         os << "BK";
     }
+}
+
+vector<pair<int, int>>& King::getMovementOffsets()
+{
+    return _movementOffsets;
 }

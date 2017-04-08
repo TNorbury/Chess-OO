@@ -12,9 +12,6 @@
 
 bool RestrictedPiece::moveTo(Square* location, Player& byPlayer)
 {
-  /*  Square* toMoveTo = Board::getInstance()
-        .getSquareAt(location.getRank(), location.getFile());*/
-
     // If the square is occupied then capture the piece that currently occupies
     // it
     if (location->isOccupied())
@@ -26,7 +23,7 @@ bool RestrictedPiece::moveTo(Square* location, Player& byPlayer)
     }
 
     // Remove the piece from its current spot on the board
-    getLocation().setOccupant(NULL);
+    getLocation()->setOccupant(NULL);
 
     // Tell the piece about its new location
     setLocation(location);

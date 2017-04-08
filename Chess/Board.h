@@ -71,7 +71,7 @@ private:
     static const int DIMENSION = 8;
     static Board& _instance;
     Board();
-    Square _boardSquares[DIMENSION][DIMENSION];
+    Square* _boardSquares[DIMENSION][DIMENSION];
 };
 
 #endif //_BOARD_H

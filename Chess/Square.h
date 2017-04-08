@@ -40,14 +40,12 @@ public:
      */
     void setOccupant(Piece* occupant);
 
-
     /**
      * Compares two squares to one another
      * @param otherSquare The square to compare to
      * @return true if the two squares are equal, otherwise false.
      */
     bool operator==(Square& otherSquare);
-
 
     Square();
 private:

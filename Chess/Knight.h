@@ -2,7 +2,6 @@
 #define _KNIGHT_H
 
 #include "Piece.h"
-//#include "Square.h"
 class Square;
 
 
@@ -22,16 +21,21 @@ public:
      */
     int getValue();
 
-    /**
-     * @param location
-     */
-    bool canMoveTo(Square* location);
 
     /**
      * Prints out the Knight
      * @param os The ostream that the Knight should be printed to.
      */
     void display(ostream& os);
+
+    /**
+     * @return A vector of the pairs of rank,file offsets that the Knight can
+     * move to
+     */
+    vector<pair<int, int>>& getMovementOffsets();
+
+private:
+    static vector<pair<int, int>> _movementOffsets;
 };
 
 #endif //_KNIGHT_H
