@@ -24,6 +24,7 @@ int Rook::getValue()
 
 bool Rook::canMoveTo(Square* location)
 {
+    bool pathClear = false;
     bool canMoveTo = false;
 
     // Determine if the destination square is to the side, or above/below the 
@@ -32,17 +33,27 @@ bool Rook::canMoveTo(Square* location)
     // above/below one another
     if (_location->getFile() == location->getFile())
     {
-        Board::getInstance().isClearRank(_location, location);
+        pathClear = Board::getInstance().isClearRank(_location, location);
     }
 
     // Otherwise, if the piece and destination square are on the same rank, 
     // then they are to the side of one another
     else if (_location->getRank() == location->getRank())
     {
-        Board::getInstance().isClearFile(_location, location);
+        pathClear = Board::getInstance().isClearFile(_location, location);
     }
 
     // If neither of those are true, then we can't move to the given square
+
+    // If the rank or file is clear, then check if this piece can actually 
+    // move onto the destination square
+    if (pathClear)
+    {
+        // If the square isn't occupied, or it's occupied by an opponent's 
+        // piece, then we can move there
+        canMoveTo = (location->isOccupied()) || 
+            (location->getOccupant().getColor != _color);
+    }
 
     return canMoveTo;
 }
