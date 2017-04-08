@@ -38,13 +38,13 @@ bool Piece::isOnSquare()
 }
 
 
-bool Piece::canMoveTo(Square& location)
+bool Piece::canMoveTo(Square* location)
 {
     return false;
 }
 
 
-bool Piece::moveTo(Square& location, Player& byPlayer)
+bool Piece::moveTo(Square* location, Player& byPlayer)
 {
     return false;
 }

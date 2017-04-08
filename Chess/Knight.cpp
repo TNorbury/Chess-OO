@@ -5,9 +5,9 @@
  * Knight implementation
  */
 
-Knight::Knight(Square & location, string color)
+Knight::Knight(Square* location, string color)
 {
-    _location = &location;
+    _location = location;
     _color = color;
 
     // Tell the square that it's now occupied
@@ -21,7 +21,7 @@ int Knight::getValue()
 }
 
 
-bool Knight::canMoveTo(Square& location)
+bool Knight::canMoveTo(Square* location)
 {
     return false;
 }

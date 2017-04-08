@@ -10,29 +10,29 @@
 
 
 
-bool RestrictedPiece::moveTo(Square& location, Player& byPlayer)
+bool RestrictedPiece::moveTo(Square* location, Player& byPlayer)
 {
-    Square* toMoveTo = &Board::getInstance()
-        .getSquareAt(location.getRank(), location.getFile());
+  /*  Square* toMoveTo = Board::getInstance()
+        .getSquareAt(location.getRank(), location.getFile());*/
 
     // If the square is occupied then capture the piece that currently occupies
     // it
-    if (location.isOccupied())
+    if (location->isOccupied())
     {
         // Have the moving player capture the piece and then remove it from the
         // board
-        byPlayer.capture(location.getOccupant());
-        location.setOccupant(NULL);
+        byPlayer.capture(location->getOccupant());
+        location->setOccupant(NULL);
     }
 
     // Remove the piece from its current spot on the board
     getLocation().setOccupant(NULL);
 
     // Tell the piece about its new location
-    setLocation(toMoveTo);
+    setLocation(location);
 
     // Move the piece to its new location on the board
-    toMoveTo->setOccupant(this);
+    location->setOccupant(this);
 
     // Now that this piece has moved, set the flag.
     _moved = true;

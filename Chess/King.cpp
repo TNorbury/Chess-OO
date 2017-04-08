@@ -6,9 +6,9 @@
   */
 
 
-King::King(Square & location, string color)
+King::King(Square* location, string color)
 {
-    _location = &location;
+    _location = location;
     _color = color;
 
     // Tell the square that it's now occupied
@@ -22,7 +22,7 @@ int King::getValue()
 }
 
 
-bool King::canMoveTo(Square& location)
+bool King::canMoveTo(Square* location)
 {
     return false;
 }

@@ -6,9 +6,9 @@
   */
 
 
-Bishop::Bishop(Square & location, string color)
+Bishop::Bishop(Square* location, string color)
 {
-    _location = &location;
+    _location = location;
     _color = color;
 
     // Tell the square that it's now occupied
@@ -22,7 +22,7 @@ int Bishop::getValue()
 }
 
 
-bool Bishop::canMoveTo(Square& location)
+bool Bishop::canMoveTo(Square* location)
 {
     return false;
 }

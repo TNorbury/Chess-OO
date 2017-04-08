@@ -41,9 +41,9 @@ bool Board::inBounds(int rank, int file)
 }
 
 
-Square& Board::getSquareAt(int rank, int file)
+Square* Board::getSquareAt(int rank, int file)
 {
-    return _boardSquares[rank][file];
+    return &_boardSquares[rank][file];
 }
 
 
@@ -92,9 +92,9 @@ void Board::display(ostream& os)
 
             // If the board is occupied at the ith - jth square, then print out
             // what it's occupied by
-            if (getSquareAt(i, j).isOccupied())
+            if (getSquareAt(i, j)->isOccupied())
             {
-                getSquareAt(i, j).getOccupant().display(os);
+                getSquareAt(i, j)->getOccupant().display(os);
             }
 
             // Otherwise, just print whitespace

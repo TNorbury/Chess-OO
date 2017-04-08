@@ -13,7 +13,7 @@ public:
      * @param location The square that the rook will sit on
      * @param color The color of the piece
      */
-    Rook(Square& location, string color);
+    Rook(Square* location, string color);
 
     /**
      * @return the value of the piece
@@ -25,7 +25,7 @@ public:
      * @param location The square that the piece is checking if it can move to
      * @return true, if the piece can move to the given square, otherwise false
      */
-    bool canMoveTo(Square& location);
+    bool canMoveTo(Square* location);
 
     /**
      * Prints out the Rook

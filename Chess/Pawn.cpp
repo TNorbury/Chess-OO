@@ -9,9 +9,9 @@
 
 
 
-Pawn::Pawn(Square & location, string color)
+Pawn::Pawn(Square* location, string color)
 {
-    _location = &location;
+    _location = location;
     _color = color;
 
     // Tell the square that it's now occupied
@@ -35,7 +35,7 @@ int Pawn::getValue()
 }
 
 
-bool Pawn::canMoveTo(Square& location)
+bool Pawn::canMoveTo(Square* location)
 {
     bool canMoveTo = false;
     int rank = _location->getRank();
@@ -100,7 +100,7 @@ void Pawn::display(ostream& os)
  * @param location The square that the pawn wants to move to.
  * @return True if the diagonal is valid. Otherwise false.
  */
-bool Pawn::checkDiagonal(int rank, int file, Square& location)
+bool Pawn::checkDiagonal(int rank, int file, Square* location)
 {
     bool diagonalValid = false;
 
@@ -114,8 +114,8 @@ bool Pawn::checkDiagonal(int rank, int file, Square& location)
             // If the square is occupied by an opponent, then the pawn can move
             // there (and capture the currently occupying piece)
             diagonalValid = ((Board::getInstance().getSquareAt(rank, file)
-                .isOccupied()) && (Board::getInstance().getSquareAt(rank, file)
-                .getOccupant().getColor() != _color));
+                ->isOccupied()) && (Board::getInstance().getSquareAt(rank, file)
+                ->getOccupant().getColor() != _color));
         }
     }
 
@@ -130,7 +130,7 @@ bool Pawn::checkDiagonal(int rank, int file, Square& location)
 * @param location The square that the pawn wants to move to.
 * @return True if the square is valid to move to. Otherwise false.
 */
-bool Pawn::checkFront(int rank, int file, Square & location)
+bool Pawn::checkFront(int rank, int file, Square* location)
 {
     bool frontValid = false;
 
@@ -143,7 +143,7 @@ bool Pawn::checkFront(int rank, int file, Square & location)
         {
             // If the square isn't occupied, then the pawn can move there
             frontValid = !(Board::getInstance().getSquareAt(rank, file)
-                .isOccupied());
+                ->isOccupied());
         }
     }
 

@@ -15,7 +15,7 @@ public:
      * @param location The square that the King will sit on
      * @param color The color of the piece
      */
-    King(Square& location, string color);
+    King(Square* location, string color);
 
     /**
      * @return the value of the piece
@@ -25,7 +25,7 @@ public:
     /**
      * @param location
      */
-    bool canMoveTo(Square& location);
+    bool canMoveTo(Square* location);
 
     /**
      * Prints out the King

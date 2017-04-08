@@ -12,7 +12,7 @@ public:
      * @param location The square that the Bishop will sit on
      * @param color The color of the piece
      */
-    Bishop(Square& location, string color);
+    Bishop(Square* location, string color);
 
     int getValue();
 
@@ -21,7 +21,7 @@ public:
      * @param location The square that the piece is checking if it can move to
      * @return true, if the piece can move to the given square, otherwise false
      */
-    bool canMoveTo(Square& location);
+    bool canMoveTo(Square* location);
 
     /**
      * Prints out the Bishop

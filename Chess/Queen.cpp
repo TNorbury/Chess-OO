@@ -6,9 +6,9 @@
   */
 
 
-Queen::Queen(Square & location, string color)
+Queen::Queen(Square* location, string color)
 {
-    _location = &location;
+    _location = location;
     _color = color;
 
     // Tell the square that it's now occupied
@@ -22,7 +22,7 @@ int Queen::getValue()
 }
 
 
-bool Queen::canMoveTo(Square& location)
+bool Queen::canMoveTo(Square* location)
 {
     return false;
 }

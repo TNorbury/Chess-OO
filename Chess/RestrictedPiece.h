@@ -14,7 +14,7 @@ public:
      * @param location The location to be moved to
      * @param byPlayer The player making the move
      */
-    virtual bool moveTo(Square& location, Player& byPlayer);
+    virtual bool moveTo(Square* location, Player& byPlayer);
 protected:
 
     /**

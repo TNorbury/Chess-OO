@@ -45,14 +45,14 @@ public:
      * @param location The square that the piece is checking if it can move to
      * @return true, if the piece can move to the given square, otherwise false
      */
-    virtual bool canMoveTo(Square& location);
+    virtual bool canMoveTo(Square* location);
 
     /**
      * Move the piece to the given location 
      * @param location The location to be moved to
      * @param byPlayer The player making the move
      */
-    virtual bool moveTo(Square& location, Player& byPlayer);
+    virtual bool moveTo(Square* location, Player& byPlayer);
 
     /**
      * Prints out the piece

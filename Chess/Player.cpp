@@ -73,9 +73,9 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
         if ((sourceFile != -1) && (sourceRank != -1) && (destinationFile != -1)
             && (destinationRank != -1))
         {
-            sourceSquare = &Board::getInstance()
+            sourceSquare = Board::getInstance()
                 .getSquareAt(sourceRank, sourceFile);
-            destinationSquare = &Board::getInstance()
+            destinationSquare = Board::getInstance()
                 .getSquareAt(destinationRank, destinationFile);
 
             // Check if the source square is occupied, if it is, then see if 
@@ -84,9 +84,9 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
                 .getColor() == _name))
             {
                 // If the occupant can move then move it
-                if (sourceSquare->getOccupant().canMoveTo(*destinationSquare))
+                if (sourceSquare->getOccupant().canMoveTo(destinationSquare))
                 {
-                    sourceSquare->getOccupant().moveTo(*destinationSquare,
+                    sourceSquare->getOccupant().moveTo(destinationSquare,
                         *this);
                 }
 
@@ -100,7 +100,8 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
             }
             else
             {
-                err << "The source square isn't occupied by a piece you own" << endl;
+                err << "The source square isn't occupied by a piece you own" 
+                    << endl;
                 isValidMove = false;
             }
         }

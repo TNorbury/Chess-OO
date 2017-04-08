@@ -6,9 +6,9 @@
   */
 
 
-Rook::Rook(Square& location, string color)
+Rook::Rook(Square* location, string color)
 {
-    _location = &location;
+    _location = location;
     _color = color;
 
     // Tell the square that it's now occupied
@@ -22,7 +22,7 @@ int Rook::getValue()
 }
 
 
-bool Rook::canMoveTo(Square& location)
+bool Rook::canMoveTo(Square* location)
 {
     return false;
 }

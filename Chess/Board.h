@@ -31,9 +31,9 @@ public:
     /**
      * @param rank The rank (row) of the square
      * @param file The file (column) of the square
-     * @return Square& A pointer to the square at the given rank and file
+     * @return Square* A pointer to the square at the given rank and file
      */
-    Square& getSquareAt(int rank, int file);
+    Square* getSquareAt(int rank, int file);
 
     /**
      * Check if the board is clear from one square to another, in the rank 
