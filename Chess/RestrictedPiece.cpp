@@ -12,24 +12,7 @@
 
 bool RestrictedPiece::moveTo(Square* location, Player& byPlayer)
 {
-    // If the square is occupied then capture the piece that currently occupies
-    // it
-    if (location->isOccupied())
-    {
-        // Have the moving player capture the piece and then remove it from the
-        // board
-        byPlayer.capture(location->getOccupant());
-        location->setOccupant(NULL);
-    }
-
-    // Remove the piece from its current spot on the board
-    getLocation()->setOccupant(NULL);
-
-    // Tell the piece about its new location
-    setLocation(location);
-
-    // Move the piece to its new location on the board
-    location->setOccupant(this);
+    Piece::moveTo(location, byPlayer);
 
     // Now that this piece has moved, set the flag.
     _moved = true;
