@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include "Board.h"
 class Square;
 class Player;
 
