@@ -21,7 +21,6 @@ public:
      */
     int getValue();
 
-
     /**
      * Prints out the Knight
      * @param os The ostream that the Knight should be printed to.

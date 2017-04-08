@@ -44,7 +44,8 @@ bool Piece::canMoveTo(Square* location)
     for (auto iter = movementOffsets.begin(); iter != movementOffsets.end()
         && !canMoveTo; ++iter)
     {
-        canMoveTo = checkSquare(iter->first, iter->second, location);
+        canMoveTo = checkSquare(_location->getRank() + iter->first, 
+            _location->getFile() + iter->second, location);
     }
 
     return canMoveTo;
@@ -53,7 +54,25 @@ bool Piece::canMoveTo(Square* location)
 
 bool Piece::moveTo(Square* location, Player& byPlayer)
 {
-    return false;
+    // If the square is occupied, then capture the piece that currently occupies
+    // it
+    if (location->isOccupied())
+    {
+        // Have the player making the move capture the piece, and then remove 
+        // it from the board
+        byPlayer.capture(location->getOccupant());
+    }
+
+    // Remove the piece from its current spot on the board
+    getLocation()->setOccupant(NULL);
+
+    // Tell the piece about the location is now occupies
+    setLocation(location);
+
+    // Move the piece to its new location on the board
+    location->setOccupant(this);
+
+    return true;
 }
 
 

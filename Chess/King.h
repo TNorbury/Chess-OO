@@ -22,11 +22,6 @@ public:
     int getValue();
 
     /**
-     * @param location
-     */
-    bool canMoveTo(Square* location);
-
-    /**
      * Prints out the King
      * @param os The ostream that the King should be printed to.
      */

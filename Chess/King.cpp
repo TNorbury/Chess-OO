@@ -26,11 +26,6 @@ int King::getValue()
 }
 
 
-bool King::canMoveTo(Square* location)
-{
-    return false;
-}
-
 void King::display(ostream & os)
 {
     // Print out something different depending on the color of the piece
