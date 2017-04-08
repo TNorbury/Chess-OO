@@ -12,6 +12,7 @@
 
 bool RestrictedPiece::moveTo(Square* location, Player& byPlayer)
 {
+    // Move the piece
     Piece::moveTo(location, byPlayer);
 
     // Now that this piece has moved, set the flag.
