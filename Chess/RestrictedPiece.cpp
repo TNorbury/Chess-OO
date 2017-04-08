@@ -1,3 +1,9 @@
+/**
+ * 1851366
+ * Assignment 7
+ * 2017-04-11
+ */
+
 #include "RestrictedPiece.h"
 #include "Square.h"
 #include "Player.h"

@@ -1,3 +1,10 @@
+/**
+ * 1851366
+ * Assignment 7
+ * 2017-04-11
+ */
+
+
 #include "King.h"
 #include "Square.h"
 

@@ -1,3 +1,9 @@
+/**
+ * 1851366
+ * Assignment 7
+ * 2017-04-11
+ */
+
 #ifndef _PLAYER_H
 #define _PLAYER_H
 

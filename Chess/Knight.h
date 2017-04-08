@@ -1,3 +1,10 @@
+/**
+ * 1851366
+ * Assignment 7
+ * 2017-04-11
+ */
+
+
 #ifndef _KNIGHT_H
 #define _KNIGHT_H
 

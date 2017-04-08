@@ -1,3 +1,10 @@
+/**
+ * 1851366
+ * Assignment 7
+ * 2017-04-11
+ */
+
+
 #ifndef _PAWN_H
 #define _PAWN_H
 
