@@ -1,3 +1,9 @@
+/**
+ * 1851366
+ * Assignment 7
+ * 2017-04-11
+ */
+ 
 #ifndef _PIECE_H
 #define _PIECE_H
 
