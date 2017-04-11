@@ -7,6 +7,9 @@
 #ifndef _PIECE_H
 #define _PIECE_H
 
+#define WHITE_COLOR "White"
+#define BLACK_COLOR "Black"
+
 #include <string>
 #include <iostream>
 #include <vector>

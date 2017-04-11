@@ -66,7 +66,7 @@ bool Rook::canMoveTo(Square* location)
 void Rook::display(ostream & os)
 {
     // Print out something different depending on the color of the piece
-    if (_color == "White")
+    if (_color == WHITE_COLOR)
     {
         os << "WR";
     }

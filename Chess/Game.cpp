@@ -14,6 +14,7 @@
 #include "Knight.h"
 #include "Rook.h"
 #include "Pawn.h"
+#include "Piece.h"
 
 /**
  * Game implementation
@@ -38,8 +39,8 @@ void Game::initialize()
     // now
     delete _white;
     delete _black;
-    _white = new Player("White", whiteKing, _whitePieces);
-    _black = new Player("Black", blackKing, _blackPieces);
+    _white = new Player(WHITE_COLOR, whiteKing, _whitePieces);
+    _black = new Player(BLACK_COLOR, blackKing, _blackPieces);
 
     // Have the board display itself
     _board.display(cout);
@@ -91,30 +92,30 @@ King& Game::PlaceBlackPieces(Board & board)
 {
     // Start by creating the black king and adding it to the set of black 
     // pieces
-    King* blackKing = new King(board.getSquareAt(EIGHT, E), "Black");
+    King* blackKing = new King(board.getSquareAt(EIGHT, E), BLACK_COLOR);
     _blackPieces.insert(blackKing);
 
     // Now create the rest of the black pieces
     // Queen
-    _blackPieces.insert(new Queen(board.getSquareAt(EIGHT, D), "Black"));
+    _blackPieces.insert(new Queen(board.getSquareAt(EIGHT, D), BLACK_COLOR));
 
     // Bishops
-    _blackPieces.insert(new Bishop(board.getSquareAt(EIGHT, C), "Black"));
-    _blackPieces.insert(new Bishop(board.getSquareAt(EIGHT, F), "Black"));
+    _blackPieces.insert(new Bishop(board.getSquareAt(EIGHT, C), BLACK_COLOR));
+    _blackPieces.insert(new Bishop(board.getSquareAt(EIGHT, F), BLACK_COLOR));
 
     // Knights
-    _blackPieces.insert(new Knight(board.getSquareAt(EIGHT, B), "Black"));
-    _blackPieces.insert(new Knight(board.getSquareAt(EIGHT, G), "Black"));
+    _blackPieces.insert(new Knight(board.getSquareAt(EIGHT, B), BLACK_COLOR));
+    _blackPieces.insert(new Knight(board.getSquareAt(EIGHT, G), BLACK_COLOR));
 
     // Rooks
-    _blackPieces.insert(new Rook(board.getSquareAt(EIGHT, A), "Black"));
-    _blackPieces.insert(new Rook(board.getSquareAt(EIGHT, H), "Black"));
+    _blackPieces.insert(new Rook(board.getSquareAt(EIGHT, A), BLACK_COLOR));
+    _blackPieces.insert(new Rook(board.getSquareAt(EIGHT, H), BLACK_COLOR));
 
     // Pawns
     // Iterate over the files for the seventh rank
     for (int i = 0; i < board.getDimensions(); i++)
     {
-        _blackPieces.insert(new Pawn(board.getSquareAt(SEVEN, i), "Black"));
+        _blackPieces.insert(new Pawn(board.getSquareAt(SEVEN, i), BLACK_COLOR));
     }
 
     return *blackKing;
@@ -131,30 +132,30 @@ King& Game::PlaceWhitePieces(Board & board)
 {
     // Start by creating the white king and adding it to the set of the white 
     // pieces
-    King* whiteKing = new King(board.getSquareAt(ONE, E), "White");
+    King* whiteKing = new King(board.getSquareAt(ONE, E), WHITE_COLOR);
     _whitePieces.insert(whiteKing);
 
     // Now create the rest of the white pieces
     // Queen
-    _whitePieces.insert(new Queen(board.getSquareAt(ONE, D), "White"));
+    _whitePieces.insert(new Queen(board.getSquareAt(ONE, D), WHITE_COLOR));
 
     // Bishops
-    _whitePieces.insert(new Bishop(board.getSquareAt(ONE, C), "White"));
-    _whitePieces.insert(new Bishop(board.getSquareAt(ONE, F), "White"));
+    _whitePieces.insert(new Bishop(board.getSquareAt(ONE, C), WHITE_COLOR));
+    _whitePieces.insert(new Bishop(board.getSquareAt(ONE, F), WHITE_COLOR));
 
     // Knights
-    _whitePieces.insert(new Knight(board.getSquareAt(ONE, B), "White"));
-    _whitePieces.insert(new Knight(board.getSquareAt(ONE, G), "White"));
+    _whitePieces.insert(new Knight(board.getSquareAt(ONE, B), WHITE_COLOR));
+    _whitePieces.insert(new Knight(board.getSquareAt(ONE, G), WHITE_COLOR));
 
     // Rooks
-    _whitePieces.insert(new Rook(board.getSquareAt(ONE, A), "White"));
-    _whitePieces.insert(new Rook(board.getSquareAt(ONE, H), "White"));
+    _whitePieces.insert(new Rook(board.getSquareAt(ONE, A), WHITE_COLOR));
+    _whitePieces.insert(new Rook(board.getSquareAt(ONE, H), WHITE_COLOR));
 
     // Pawns
     // Iterate over the files for the second rank
     for (int i = 0; i < board.getDimensions(); i++)
     {
-        _whitePieces.insert(new Pawn(board.getSquareAt(TWO, i), "White"));
+        _whitePieces.insert(new Pawn(board.getSquareAt(TWO, i), WHITE_COLOR));
     }
 
     return *whiteKing;
