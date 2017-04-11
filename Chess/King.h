@@ -4,9 +4,11 @@
  * 2017-04-11
  */
 
-
 #ifndef _KING_H
 #define _KING_H
+
+#define WHITE_KING "WK"
+#define BLACK_KING "BK"
 
 #include "RestrictedPiece.h"
 class Square;

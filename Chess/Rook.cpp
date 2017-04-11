@@ -3,6 +3,7 @@
  * Assignment 7
  * 2017-04-11
  */
+ 
 #include "Rook.h"
 #include "Square.h"
 
@@ -68,10 +69,10 @@ void Rook::display(ostream & os)
     // Print out something different depending on the color of the piece
     if (_color == WHITE_COLOR)
     {
-        os << "WR";
+        os << WHITE_ROOK;
     }
     else
     {
-        os << "BR";
+        os << BLACK_ROOK;
     }
 }

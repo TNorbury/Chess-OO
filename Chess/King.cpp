@@ -4,7 +4,6 @@
  * 2017-04-11
  */
 
-
 #include "King.h"
 #include "Square.h"
 
@@ -36,13 +35,13 @@ int King::getValue()
 void King::display(ostream & os)
 {
     // Print out something different depending on the color of the piece
-    if (_color == "White")
+    if (_color == WHITE_COLOR)
     {
-        os << "WK";
+        os << WHITE_KING;
     }
     else
     {
-        os << "BK";
+        os << BLACK_KING;
     }
 }
 

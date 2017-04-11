@@ -4,7 +4,6 @@
  * 2017-04-11
  */
 
-
 #include "Knight.h"
 #include "Square.h"
 
@@ -39,13 +38,13 @@ int Knight::getValue()
 void Knight::display(ostream & os)
 {
     // Print out something different depending on the color of the piece
-    if (_color == "White")
+    if (_color == WHITE_COLOR)
     {
-        os << "WN";
+        os << WHITE_KNIGHT;
     }
     else
     {
-        os << "BN";
+        os << BLACK_KNIGHT;
     }
 }
 

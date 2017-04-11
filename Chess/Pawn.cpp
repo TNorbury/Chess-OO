@@ -4,8 +4,6 @@
  * 2017-04-11
  */
 
-
-#include <iostream>
 #include "Pawn.h"
 #include "Square.h"
 #include "Board.h"
@@ -89,13 +87,13 @@ bool Pawn::canMoveTo(Square* location)
 void Pawn::display(ostream& os)
 {
     // Print out something different depending on the color of the piece
-    if (_color == "White")
+    if (_color == WHITE_COLOR)
     {
-        os << "WP";
+        os << WHITE_PAWN;
     }
     else
     {
-        os << "BP";
+        os << BLACK_PAWN;
     }
 }
 

@@ -4,7 +4,6 @@
  * 2017-04-11
  */
 
-
 #include "Bishop.h"
 #include "Square.h"
 
@@ -36,12 +35,12 @@ bool Bishop::canMoveTo(Square* location)
 
 void Bishop::display(ostream & os)
 {
-    if (_color == "White")
+    if (_color == WHITE_COLOR)
     {
-        os << "WB";
+        os << WHITE_BISHOP;
     }
     else
     {
-        os << "BB";
+        os << BLACK_BISHOP;
     }
 }

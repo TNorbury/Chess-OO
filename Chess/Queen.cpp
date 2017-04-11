@@ -4,7 +4,6 @@
  * 2017-04-11
  */
 
-
 #include "Queen.h"
 #include "Square.h"
 
@@ -37,12 +36,12 @@ bool Queen::canMoveTo(Square* location)
 void Queen::display(ostream & os)
 {
     // Print out something different depending on the color of the piece
-    if (_color == "White")
+    if (_color == WHITE_COLOR)
     {
-        os << "WQ";
+        os << WHITE_QUEEN;
     }
     else
     {
-        os << "BQ";
+        os << BLACK_QUEEN;
     }
 }

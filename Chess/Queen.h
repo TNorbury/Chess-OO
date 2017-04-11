@@ -4,9 +4,11 @@
  * 2017-04-11
  */
 
-
 #ifndef _QUEEN_H
 #define _QUEEN_H
+
+#define WHITE_QUEEN "WQ"
+#define BLACK_QUEEN "BQ"
 
 #include "Piece.h"
 

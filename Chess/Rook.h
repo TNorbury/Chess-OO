@@ -7,6 +7,9 @@
 #ifndef _ROOK_H
 #define _ROOK_H
 
+#define WHITE_ROOK "WR"
+#define BLACK_ROOK "BR"
+
 #include "RestrictedPiece.h"
 
 

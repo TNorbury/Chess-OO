@@ -4,11 +4,12 @@
  * 2017-04-11
  */
 
-
 #ifndef _PAWN_H
 #define _PAWN_H
 
-#include <iostream>
+#define WHITE_PAWN "WP"
+#define BLACK_PAWN "BP"
+
 #include "RestrictedPiece.h"
 class Square;
 

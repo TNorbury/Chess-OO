@@ -4,9 +4,11 @@
  * 2017-04-11
  */
 
-
 #ifndef _BISHOP_H
 #define _BISHOP_H
+
+#define WHITE_BISHOP "WB"
+#define BLACK_BISHOP "BB"
 
 #include "Piece.h"
 
