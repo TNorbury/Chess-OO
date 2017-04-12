@@ -25,21 +25,21 @@ bool Bishop::canMoveTo(Square* location)
 {
     bool canMoveTo = false;
     bool pathClear = false;
-    
+
     // Determine if their is a clear path diagonally from the bishop to the 
     // destination location
     pathClear = Board::getInstance().isClearDiagonal(_location, location);
-    
+
     // If the path to the destination square is clear, then check if it's 
     // possible to occupy said square
     if (pathClear)
     {
         // If the square isn't occupied, or it's occupied by an opponent's 
         // piece, then we can move there
-        canMoveTo = (!location->isOccupied()) || 
-            (location->getOccupant().getColor() != _color);        
+        canMoveTo = (!location->isOccupied()) ||
+            (location->getOccupant().getColor() != _color);
     }
-    
+
     return canMoveTo;
 }
 

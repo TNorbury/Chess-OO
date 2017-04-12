@@ -24,7 +24,7 @@ bool RestrictedPiece::moveTo(Square* location, Player& byPlayer)
 {
     // Since this piece is going to move, set the flag
     _moved = true;
-    
+
     // Defer movement to Piece
     return Piece::moveTo(location, byPlayer);;
 }
