@@ -3,7 +3,7 @@
  * Assignment 7
  * 2017-04-13
  */
- 
+
 #include <iostream>
 #include "Game.h"
 #include "Player.h"
