@@ -23,6 +23,7 @@ King::King(Square* location, string color) : RestrictedPiece(location, color)
 
 int King::getValue()
 {
+    // King will never actually be "captured" so no need for a point value
     return 0;
 }
 

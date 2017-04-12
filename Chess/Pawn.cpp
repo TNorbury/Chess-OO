@@ -28,7 +28,8 @@ Pawn::Pawn(Square* location, string color) : RestrictedPiece(location, color)
 
 int Pawn::getValue()
 {
-    return 0;
+    // Value for chess pieces taken from http://chess.stackexchange.com/a/4218
+    return 1;
 }
 
 

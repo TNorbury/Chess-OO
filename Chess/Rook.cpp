@@ -18,7 +18,8 @@ Rook::Rook(Square* location, string color) : RestrictedPiece(location, color)
 
 int Rook::getValue()
 {
-    return 0;
+    // Value for chess pieces taken from http://chess.stackexchange.com/a/4218
+    return 5;
 }
 
 

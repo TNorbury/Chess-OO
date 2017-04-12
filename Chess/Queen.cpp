@@ -16,7 +16,8 @@ Queen::Queen(Square* location, string color) : Piece(location, color) {}
 
 int Queen::getValue()
 {
-    return 0;
+    // Value for chess pieces taken from http://chess.stackexchange.com/a/4218
+    return 9;
 }
 
 
