@@ -35,6 +35,13 @@ public:
      * @return true, if the piece can move to the given square, otherwise false
      */
     bool canMoveTo(Square* location);
+    
+    /**
+     * Move the piece to the given location
+     * @param location The location to be moved to
+     * @param byPlayer The player making the move
+     */
+    bool moveTo(Square* location, Player& byPlayer);
 
     /**
      * Prints out the Pawn

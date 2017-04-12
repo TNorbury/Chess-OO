@@ -86,6 +86,7 @@ bool Piece::moveTo(Square* location, Player& byPlayer)
     // Move the piece to its new location on the board
     location->setOccupant(this);
 
+    // The piece was moved sucessfully, so return true
     return true;
 }
 

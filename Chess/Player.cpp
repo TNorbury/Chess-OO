@@ -8,10 +8,11 @@
 #include <set>
 #include <string>
 #include <iostream>
-#include "Player.h"
+#include "Board.h"
+#include "Game.h"
 #include "King.h"
 #include "Piece.h"
-#include "Board.h"
+#include "Player.h"
 #include "Square.h"
 
  /**
@@ -134,6 +135,9 @@ void Player::capture(Piece& piece)
 
     // Tell the piece that it isn't on the board anymore
     piece.setLocation(NULL);
+    
+    // Since a piece was captured tell the game to reset the turn counter.
+    Game::resetTurnCount();
 }
 
 

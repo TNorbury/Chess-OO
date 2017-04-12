@@ -36,6 +36,8 @@ class Board;
 #define WHITE 0
 #define BLACK 1
 
+#define MAX_TURNS 50
+
 class Game
 {
 public:
@@ -61,6 +63,18 @@ public:
      * @return The current player
      */
     static Player* getCurrentPlayer();
+    
+    /**
+     * Tells the game that a turn was performed. Returns true if the maximum 
+     * number of turns has been reached.
+     * @return True, if the max number of turns have been performed
+     */
+    static bool turnPerformed();
+    
+    /**
+     * Reset the turn counter to 0
+     */
+    static void resetTurnCount();
 
 private:
     static Player* _white;
@@ -69,6 +83,7 @@ private:
     static Board& _board;
     static set<Piece*> _whitePieces;
     static set<Piece*> _blackPieces;
+    static int _turnCounter;
 
     static King& PlaceBlackPieces(Board& board);
     static King& PlaceWhitePieces(Board& board);

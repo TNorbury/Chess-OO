@@ -12,7 +12,6 @@ int main()
 {
     // When one of the two kings is checkmated/captured, then the game is over.
     bool gameOver = false;
-    int moveCounter = 0;
 
     // Initialize the game
     Game::initialize();
@@ -23,7 +22,7 @@ int main()
     // While the game is not over, continue to alternate players and process 
     // their input
     while (!gameOver)
-    {
+    {   
         // Try to get the current player to enter a valid move
         while (!currentPlayer->makeMove(cin, cout, cerr))
         {
@@ -36,10 +35,14 @@ int main()
         // the changes
         Board::getInstance().display(cout);
 
-        // If 10 moves have been played, then end the game
-        if (++moveCounter == 10)
+        // Tell the game that a turn was performed. If the maximum number of 
+        // turns were performed, then the game is over
+        if (Game::turnPerformed())
         {
             gameOver = true;
+            cout << endl << MAX_TURNS << " turns were performed without a piece"
+                << " being captured or a pawn moving, so the game is a DRAW!" 
+                << endl;
         }
 
         // Now get the next player

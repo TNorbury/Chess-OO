@@ -22,12 +22,11 @@ RestrictedPiece::RestrictedPiece(Square * location, string color)
 
 bool RestrictedPiece::moveTo(Square* location, Player& byPlayer)
 {
-    // Move the piece
-    Piece::moveTo(location, byPlayer);
-
-    // Now that this piece has moved, set the flag.
+    // Since this piece is going to move, set the flag
     _moved = true;
-    return _moved;
+    
+    // Defer movement to Piece
+    return Piece::moveTo(location, byPlayer);;
 }
 
 

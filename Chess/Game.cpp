@@ -3,7 +3,7 @@
  * Assignment 7
  * 2017-04-13
  */
-
+ 
 #include <iostream>
 #include "Game.h"
 #include "Player.h"
@@ -25,6 +25,7 @@ Player* Game::_currentPlayer = new Player();
 Board& Game::_board = Board::getInstance();
 set<Piece*> Game::_blackPieces;
 set<Piece*> Game::_whitePieces;
+int Game::_turnCounter = 0;
 
 
 void Game::initialize()
@@ -81,6 +82,17 @@ Player* Game::getCurrentPlayer()
     return _currentPlayer;
 }
 
+
+bool Game::turnPerformed()
+{
+    return (++_turnCounter == MAX_TURNS);
+}
+
+
+void Game::resetTurnCount()
+{
+    _turnCounter = 0;
+}
 
 /**
  * Places all of the black pieces on the board in their initial state
