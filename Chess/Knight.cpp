@@ -17,16 +17,7 @@ vector<pair<int, int>> Knight::_movementOffsets = { {-2, -1}, {-2, 1},
 {-1, -2}, {-1, 2}, {1, -2}, {1, 2}, {2, -1}, {2, 1} };
 
 
-Knight::Knight(Square* location, string color)
-{
-    _location = location;
-    _color = color;
-
-    // Tell the square that it's now occupied
-    _location->setOccupant(this);
-
-
-}
+Knight::Knight(Square* location, string color): Piece(location, color) {}
 
 
 int Knight::getValue()

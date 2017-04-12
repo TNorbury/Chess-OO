@@ -3,7 +3,7 @@
  * Assignment 7
  * 2017-04-11
  */
- 
+
 #ifndef _PIECE_H
 #define _PIECE_H
 
@@ -25,6 +25,13 @@ using namespace std;
 class Piece
 {
 public:
+
+    /**
+     * Create a new Piece at the given square and for the specified color
+     * @param location The square that the Piece will sit on
+     * @param color The color of the piece
+     */
+    Piece(Square* location, string color);
 
     /**
      * @return the value of the piece

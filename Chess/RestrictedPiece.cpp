@@ -15,6 +15,7 @@
  */
 
 
+RestrictedPiece::RestrictedPiece(Square * location, string color): Piece(location, color){}
 
 bool RestrictedPiece::moveTo(Square* location, Player& byPlayer)
 {

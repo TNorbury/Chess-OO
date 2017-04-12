@@ -14,14 +14,8 @@
 
 
 
-Pawn::Pawn(Square* location, string color)
+Pawn::Pawn(Square* location, string color) : RestrictedPiece(location, color)
 {
-    _location = location;
-    _color = color;
-
-    // Tell the square that it's now occupied
-    _location->setOccupant(this);
-
     // Set the rank modifier based upon the pawn's color
     if (color == "White")
     {

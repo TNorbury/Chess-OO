@@ -4,7 +4,6 @@
  * 2017-04-11
  */
 
-
 #include "Board.h"
 #include "Piece.h" 
 #include "Player.h"
@@ -14,6 +13,11 @@
  * Piece implementation
  */
 
+Piece::Piece(Square * location, string color) : _location(location), _color(color)
+{
+    // Tell the square that it's now occupied
+    _location->setOccupant(this);
+}
 
 string Piece::getColor()
 {
