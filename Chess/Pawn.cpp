@@ -15,7 +15,7 @@
 Pawn::Pawn(Square* location, string color) : RestrictedPiece(location, color)
 {
     // Set the rank modifier based upon the pawn's color
-    if (color == "White")
+    if (color == WHITE_COLOR)
     {
         _rankModifier = -1;
     }
@@ -139,9 +139,11 @@ bool Pawn::checkFront(int rank, int file, Square* location)
         // location, then check if it's occupied.
         if (Board::getInstance().getSquareAt(rank, file) == location)
         {
-            // If the square isn't occupied, then the pawn can move there
-            frontValid = !(Board::getInstance().getSquareAt(rank, file)
-                ->isOccupied());
+            // If the square isn't occupied and the path to the square is clear
+            // then the pawn can move there
+            frontValid = (!Board::getInstance().getSquareAt(rank, file)
+                ->isOccupied())
+                && Board::getInstance().isClearFile(_location, location);
         }
     }
 
