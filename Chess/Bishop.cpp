@@ -1,7 +1,7 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
 
 #include "Bishop.h"
@@ -10,7 +10,6 @@
  /**
   * Bishop implementation
   */
-
 
 Bishop::Bishop(Square* location, string color) : Piece(location, color) {}
 
@@ -25,6 +24,7 @@ bool Bishop::canMoveTo(Square* location)
 {
     return false;
 }
+
 
 void Bishop::display(ostream & os)
 {

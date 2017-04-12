@@ -1,7 +1,7 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
 
 #ifndef _PAWN_H
@@ -12,7 +12,6 @@
 
 #include "RestrictedPiece.h"
 class Square;
-
 
 class Pawn : public RestrictedPiece
 {

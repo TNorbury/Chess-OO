@@ -1,7 +1,7 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
 
 #include "Square.h"
@@ -10,8 +10,6 @@
  /**
   * Square implementation
   */
-
-
 
 Square::Square(int rank, int file)
 {
@@ -52,10 +50,10 @@ void Square::setOccupant(Piece* occupant)
 bool Square::operator==(Square& otherSquare)
 {
     // If the rank and file are the same, then the squares are equal
-    return ((_rank == otherSquare.getRank()) 
+    return ((_rank == otherSquare.getRank())
         && (_file == otherSquare.getFile()));
 }
 
- Square::Square()
- {
- }
+Square::Square()
+{
+}

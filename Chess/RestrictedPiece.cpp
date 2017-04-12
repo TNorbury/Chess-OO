@@ -1,7 +1,7 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
 
 #include "RestrictedPiece.h"
@@ -10,12 +10,15 @@
 #include "Piece.h"
 #include "Board.h"
 
-/**
- * RestrictedPiece implementation
- */
+ /**
+  * RestrictedPiece implementation
+  */
 
+RestrictedPiece::RestrictedPiece(Square * location, string color)
+    : Piece(location, color)
+{
+}
 
-RestrictedPiece::RestrictedPiece(Square * location, string color): Piece(location, color){}
 
 bool RestrictedPiece::moveTo(Square* location, Player& byPlayer)
 {

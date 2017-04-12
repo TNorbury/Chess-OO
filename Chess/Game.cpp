@@ -1,9 +1,8 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
-
 
 #include <iostream>
 #include "Game.h"
@@ -16,9 +15,9 @@
 #include "Pawn.h"
 #include "Piece.h"
 
-/**
- * Game implementation
- */
+ /**
+  * Game implementation
+  */
 
 Player* Game::_white = new Player();
 Player* Game::_black = new Player();
@@ -76,10 +75,12 @@ Player& Game::getOpponentOf(Player& player)
     return *opponent;
 }
 
+
 Player* Game::getCurrentPlayer()
 {
     return _currentPlayer;
 }
+
 
 /**
  * Places all of the black pieces on the board in their initial state
@@ -120,6 +121,7 @@ King& Game::PlaceBlackPieces(Board & board)
 
     return *blackKing;
 }
+
 
 /**
  * Places all of the white pieces on the board in their initial state

@@ -1,7 +1,7 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
 
 #ifndef _PIECE_H
@@ -18,9 +18,7 @@
 class Square;
 class Player;
 
-
 using namespace std;
-
 
 class Piece
 {

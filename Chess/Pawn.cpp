@@ -1,18 +1,16 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
 
 #include "Pawn.h"
 #include "Square.h"
 #include "Board.h"
 
-/**
- * Pawn implementation
- */
-
-
+ /**
+  * Pawn implementation
+  */
 
 Pawn::Pawn(Square* location, string color) : RestrictedPiece(location, color)
 {
@@ -115,7 +113,7 @@ bool Pawn::checkDiagonal(int rank, int file, Square* location)
             // there (and capture the currently occupying piece)
             diagonalValid = ((Board::getInstance().getSquareAt(rank, file)
                 ->isOccupied()) && (Board::getInstance().getSquareAt(rank, file)
-                ->getOccupant().getColor() != _color));
+                    ->getOccupant().getColor() != _color));
         }
     }
 

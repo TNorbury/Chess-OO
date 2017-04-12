@@ -1,7 +1,7 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
 
 #ifndef _KNIGHT_H
@@ -24,7 +24,7 @@ public:
      * @param color The color of the piece
      */
     Knight(Square* location, string color);
-    
+
     /**
      * @return the value of the piece
      */

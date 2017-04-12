@@ -1,7 +1,7 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
 
 #include "Board.h"
@@ -9,11 +9,12 @@
 #include "Player.h"
 #include "Square.h"
 
-/**
- * Piece implementation
- */
+ /**
+  * Piece implementation
+  */
 
-Piece::Piece(Square * location, string color) : _location(location), _color(color)
+Piece::Piece(Square * location, string color) 
+    : _location(location), _color(color)
 {
     // Tell the square that it's now occupied
     _location->setOccupant(this);
@@ -55,7 +56,7 @@ bool Piece::canMoveTo(Square* location)
     for (auto iter = movementOffsets.begin(); iter != movementOffsets.end()
         && !canMoveTo; ++iter)
     {
-        canMoveTo = checkSquare(_location->getRank() + iter->first, 
+        canMoveTo = checkSquare(_location->getRank() + iter->first,
             _location->getFile() + iter->second, location);
     }
 

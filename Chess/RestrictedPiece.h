@@ -1,7 +1,7 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
 
 #ifndef _RESTRICTEDPIECE_H
@@ -16,11 +16,11 @@ class RestrictedPiece : public Piece
 public:
 
     /**
-    * Create a new Restricted Piece at the given square and for the specified 
-    * color
-    * @param location The square that the Restricted Piece will sit on
-    * @param color The color of the piece
-    */
+     * Create a new Restricted Piece at the given square and for the specified
+     * color
+     * @param location The square that the Restricted Piece will sit on
+     * @param color The color of the piece
+     */
     RestrictedPiece(Square* location, string color);
 
     /**

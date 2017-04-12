@@ -1,7 +1,7 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
 
 
@@ -14,9 +14,9 @@
 #include "Board.h"
 #include "Square.h"
 
-/**
- * Player implementation
- */
+ /**
+  * Player implementation
+  */
 
 const int SOURCE_FILE = 0;
 const int SOURCE_RANK = 1;
@@ -101,13 +101,13 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
                 else
                 {
                     cerr << "The piece at the starting square can't move to "
-                                << "the destination square" << endl;
+                        << "the destination square" << endl;
                     isValidMove = false;
                 }
             }
             else
             {
-                err << "The source square isn't occupied by a piece you own" 
+                err << "The source square isn't occupied by a piece you own"
                     << endl;
                 isValidMove = false;
             }
@@ -151,7 +151,7 @@ Player::Player()
  * returned is based around the indexes of the chess board and is 0-based
  *
  * @param inputCharacter The character that will be parsed
- * @param os The stream that will be printed to if there is an issue with 
+ * @param os The stream that will be printed to if there is an issue with
  *           parsing
  *
  * @return 0-7 if the character was valid, otherwise -1.
@@ -193,7 +193,7 @@ int Player::parseRank(char inputCharacter, ostream& os)
             rank = 0;
             break;
 
-        // If the input doesn't match any of those above, then it is invalid.
+            // If the input doesn't match any of those above, then it is invalid.
         default:
             rank = -1;
             os << inputCharacter << " is not a valid rank!" << endl;
@@ -244,7 +244,7 @@ int Player::parseFile(char inputCharacter, ostream& os)
             file = 7;
             break;
 
-        // If the input doesn't match any of those above, then it is invalid.
+            // If the input doesn't match any of those above, then it is invalid.
         default:
             file = -1;
             os << inputCharacter << " is not a valid file!" << endl;

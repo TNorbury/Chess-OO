@@ -1,9 +1,8 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
-
 
 #ifndef _GAME_H
 #define _GAME_H
@@ -45,7 +44,6 @@ public:
      * Set up a new game of chess.
      */
     static void initialize();
-
 
     /**
      * Gets the player that is supposed to go next.

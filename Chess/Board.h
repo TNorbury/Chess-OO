@@ -1,7 +1,7 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
 
 #ifndef _BOARD_H
@@ -42,7 +42,7 @@ public:
     Square* getSquareAt(int rank, int file);
 
     /**
-     * Check if the board is clear from one square to another, in the rank 
+     * Check if the board is clear from one square to another, in the rank
      * (vertical) direction
      * @param from The starting square
      * @param to The ending square

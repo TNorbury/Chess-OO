@@ -1,7 +1,7 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
 
 #ifndef _KING_H
@@ -12,7 +12,6 @@
 
 #include "RestrictedPiece.h"
 class Square;
-
 
 class King : public RestrictedPiece
 {
@@ -37,7 +36,7 @@ public:
     void display(ostream& os);
 
     /**
-     * @return A vector of the pairs of rank,file offsets that the king can 
+     * @return A vector of the pairs of rank,file offsets that the king can
      * move to
      */
     vector<pair<int, int>>& getMovementOffsets();

@@ -1,9 +1,9 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
- 
+
 #include "Rook.h"
 #include "Square.h"
 
@@ -11,7 +11,9 @@
   * Rook implementation
   */
 
-Rook::Rook(Square* location, string color): RestrictedPiece(location, color) {}
+Rook::Rook(Square* location, string color) : RestrictedPiece(location, color)
+{
+}
 
 
 int Rook::getValue()
@@ -49,7 +51,7 @@ bool Rook::canMoveTo(Square* location)
     {
         // If the square isn't occupied, or it's occupied by an opponent's 
         // piece, then we can move there
-        canMoveTo = (!location->isOccupied()) || 
+        canMoveTo = (!location->isOccupied()) ||
             (location->getOccupant().getColor() != _color);
     }
 

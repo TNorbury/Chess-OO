@@ -1,7 +1,7 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
 
 #ifndef _QUEEN_H
@@ -11,7 +11,6 @@
 #define BLACK_QUEEN "BQ"
 
 #include "Piece.h"
-
 
 class Queen : public Piece
 {

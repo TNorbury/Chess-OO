@@ -1,7 +1,7 @@
 /**
  * 1851366
  * Assignment 7
- * 2017-04-11
+ * 2017-04-13
  */
 
 #include "Game.h"
@@ -28,14 +28,14 @@ int main()
         while (!currentPlayer->makeMove(cin, cout, cerr))
         {
             cerr << "Input should be structured like:" << endl <<
-                "FileRank FileRank" << endl << "Rank = 1-8. File = a-h" 
+                "FileRank FileRank" << endl << "Rank = 1-8. File = a-h"
                 << endl;
         }
 
         // Since a piece was moved on the board, display it again to reflect 
         // the changes
         Board::getInstance().display(cout);
-        
+
         // If 10 moves have been played, then end the game
         if (++moveCounter == 10)
         {
