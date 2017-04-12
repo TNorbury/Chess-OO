@@ -22,13 +22,13 @@ int main()
     // While the game is not over, continue to alternate players and process 
     // their input
     while (!gameOver)
-    {   
+    {
         // Try to get the current player to enter a valid move
         while (!currentPlayer->makeMove(cin, cout, cerr))
         {
-            cerr << "Input should be structured like:" << endl <<
+            cerr << endl << "Input should be structured like:" << endl <<
                 "FileRank FileRank" << endl << "Rank = 1-8. File = a-h"
-                << endl;
+                << endl << endl;
         }
 
         // Since a piece was moved on the board, display it again to reflect 
@@ -41,7 +41,7 @@ int main()
         {
             gameOver = true;
             cout << endl << MAX_TURNS << " turns were performed without a piece"
-                << " being captured or a pawn moving, so the game is a DRAW!" 
+                << " being captured or a pawn moving, so the game is a DRAW!"
                 << endl;
         }
 

@@ -17,7 +17,7 @@ Piece::Piece(Square * location, string color)
 {
     _location = location;
     _color = color;
-    
+
     // Tell the square that it's now occupied
     _location->setOccupant(this);
 }
@@ -86,7 +86,7 @@ bool Piece::moveTo(Square* location, Player& byPlayer)
     // Move the piece to its new location on the board
     location->setOccupant(this);
 
-    // The piece was moved sucessfully, so return true
+    // The piece was moved successfully, so return true
     return true;
 }
 

@@ -35,7 +35,7 @@ public:
      * @return true, if the piece can move to the given square, otherwise false
      */
     bool canMoveTo(Square* location);
-    
+
     /**
      * Move the piece to the given location
      * @param location The location to be moved to

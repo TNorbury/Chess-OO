@@ -231,7 +231,7 @@ bool Board::isClearDiagonal(Square* from, Square* to)
             squareOnPath->getFile() + (1 * horizontalModifier)))
         {
             squareOnPath = Board::getInstance().getSquareAt(
-                squareOnPath->getRank() + (1 * verticalModifier), 
+                squareOnPath->getRank() + (1 * verticalModifier),
                 squareOnPath->getFile() + (1 * horizontalModifier));
 
             // Check to see if this square is the one we're looking for. If it 

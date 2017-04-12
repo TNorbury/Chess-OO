@@ -82,7 +82,7 @@ bool Pawn::moveTo(Square* location, Player& byPlayer)
 {
     // Since a pawn is being moved, tell the game to reset the turn counter.
     Game::resetTurnCount();
-    
+
     // Defer movement to RestrictedPiece
     return RestrictedPiece::moveTo(location, byPlayer);
 }

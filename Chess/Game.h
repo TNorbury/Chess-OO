@@ -63,14 +63,14 @@ public:
      * @return The current player
      */
     static Player* getCurrentPlayer();
-    
+
     /**
-     * Tells the game that a turn was performed. Returns true if the maximum 
+     * Tells the game that a turn was performed. Returns true if the maximum
      * number of turns has been reached.
      * @return True, if the max number of turns have been performed
      */
     static bool turnPerformed();
-    
+
     /**
      * Reset the turn counter to 0
      */
