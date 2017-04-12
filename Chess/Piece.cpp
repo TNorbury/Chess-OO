@@ -97,7 +97,7 @@ vector<pair<int, int>>& Piece::getMovementOffsets()
 
 /**
  * Checks if the square at the given rank and file is the same as the square
- * the piece is trying to move to, and if that square to valid to move to.
+ * the piece is trying to move to, and if that square is valid to move to.
  *
  * @param rank The rank of the square to check
  * @param file The file of the square to check
