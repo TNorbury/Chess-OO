@@ -43,7 +43,7 @@ public:
 
     /**
      * Check if the board is clear from one square to another, in the rank
-     * (vertical) direction
+     * (horizontal) direction
      * @param from The starting square
      * @param to The ending square
      * @return True if it's clear
@@ -52,7 +52,7 @@ public:
 
     /**
      * Check if the board is clear from one square to another, in the file
-     * (horizontal) direction
+     * (vertical) direction
      * @param from The starting square
      * @param to The ending square
      * @return True if it's clear
