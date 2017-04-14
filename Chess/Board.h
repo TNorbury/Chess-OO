@@ -76,8 +76,11 @@ public:
 private:
     static const int DIMENSION = 8;
     static Board& _instance;
-    Board();
     Square* _boardSquares[DIMENSION][DIMENSION];
+    Board();
+    
+    bool isClearPath(int verticalModifier, int horizontalModifier, Square* from,
+                    Square* to);
 };
 
 #endif //_BOARD_H

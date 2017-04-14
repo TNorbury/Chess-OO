@@ -56,12 +56,7 @@ Square* Board::getSquareAt(int rank, int file)
 bool Board::isClearRank(Square* from, Square* to)
 {
     bool isClear = false;
-    bool endOfPath = false;
     int horizontalModifier;
-
-    // This will keep track of the square we're currently looking as we walk 
-    // the path. We'll start at the from square
-    Square* squareOnPath = from;
 
     // Set the horizontal modifier depending on if the destination square is 
     // to the left or right of the source square
@@ -76,43 +71,8 @@ bool Board::isClearRank(Square* from, Square* to)
     {
         horizontalModifier = 1;
     }
-
-    // Walk a horizontal path along the board starting at from and going until 
-    // either an obstacle is found, or to is reached
-    while (!endOfPath)
-    {
-        // See if moving horizontally one square would still be on the board, 
-        // if it is then get the next square on the path
-        if (Board::inBounds(squareOnPath->getRank(), squareOnPath->getFile()
-            + (1 * horizontalModifier)))
-        {
-            squareOnPath = Board::getInstance().getSquareAt(
-                squareOnPath->getRank(),
-                squareOnPath->getFile() + (1 * horizontalModifier));
-
-            // Check to see if this square is the one we're looking for. If it 
-            // is then we can stop walking the path
-            if (squareOnPath == to)
-            {
-                endOfPath = true;
-                isClear = true;
-            }
-
-            // If it's not the one we're looking for, check to see if it's 
-            // occupied, which would mean that the path isn't clear
-            else if (squareOnPath->isOccupied())
-            {
-                endOfPath = true;
-            }
-        }
-
-        // Otherwise, if it's not inbounds, then we've reach the end of the 
-        // path
-        else
-        {
-            endOfPath = true;
-        }
-    }
+    
+    isClear = isClearPath(0, horizontalModifier, from, to);
 
     return isClear;
 }
@@ -122,12 +82,7 @@ bool Board::isClearFile(Square* from, Square* to)
 {
 
     bool isClear = false;
-    bool endOfPath = false;
     int verticalModifier;
-
-    // This will keep track of the square we're currently looking as we walk 
-    // the path. We'll start at the from square
-    Square* squareOnPath = from;
 
     // Set the vertical modifier depending on if the destination square is 
     // above or below the source square
@@ -142,43 +97,8 @@ bool Board::isClearFile(Square* from, Square* to)
     {
         verticalModifier = 1;
     }
-
-    // Walk a vertical path along the board starting at from and going until 
-    // either an obstacle is found, or to is reached
-    while (!endOfPath)
-    {
-        // See if moving vertically one square would still be on the board, 
-        // if it is, then get the next square on the path
-        if (Board::inBounds(squareOnPath->getRank() + (1 * verticalModifier),
-            squareOnPath->getFile()))
-        {
-            squareOnPath = Board::getInstance().getSquareAt(
-                squareOnPath->getRank() + (1 * verticalModifier),
-                squareOnPath->getFile());
-
-            // Check to see if this square is the one we're looking for. If it 
-            // is, then we can stop walking the path
-            if (squareOnPath == to)
-            {
-                endOfPath = true;
-                isClear = true;
-            }
-
-            // If it's not the one we're looking for, check to see if it's 
-            // occupied, which would mean that the path isn't clear
-            else if (squareOnPath->isOccupied())
-            {
-                endOfPath = true;
-            }
-        }
-
-        // Otherwise, if it's not in-bounds then we've reached the end of the 
-        // path
-        else
-        {
-            endOfPath = true;
-        }
-    }
+    
+    isClear = isClearPath(verticalModifier, 0, from, to);
 
     return isClear;
 }
@@ -187,13 +107,8 @@ bool Board::isClearFile(Square* from, Square* to)
 bool Board::isClearDiagonal(Square* from, Square* to)
 {
     bool isClear = false;
-    bool endOfPath = false;
     int verticalModifier;
     int horizontalModifier;
-
-    // This will keep track of the square we're currently looking as we walk 
-    // the path. We'll start at the from square
-    Square* squareOnPath = from;
 
     // Set the vertical and horizontal modifiers depending on where "to" is in 
     // relation to "from"
@@ -220,43 +135,8 @@ bool Board::isClearDiagonal(Square* from, Square* to)
     {
         horizontalModifier = 1;
     }
-
-    // Walk a diagonal path along the board starting at "from" and going until 
-    // either an obstacle is found, or "to" is reached
-    while (!endOfPath)
-    {
-        // See if moving diagonally one square would still be on the board, 
-        // if it is, then get the next square on the path
-        if (Board::inBounds(squareOnPath->getRank() + (1 * verticalModifier),
-            squareOnPath->getFile() + (1 * horizontalModifier)))
-        {
-            squareOnPath = Board::getInstance().getSquareAt(
-                squareOnPath->getRank() + (1 * verticalModifier),
-                squareOnPath->getFile() + (1 * horizontalModifier));
-
-            // Check to see if this square is the one we're looking for. If it 
-            // is, then we can stop walking the path
-            if (squareOnPath == to)
-            {
-                endOfPath = true;
-                isClear = true;
-            }
-
-            // If it's not the one we're looking for, check to see if it's 
-            // occupied, which would mean that the path isn't clear
-            else if (squareOnPath->isOccupied())
-            {
-                endOfPath = true;
-            }
-        }
-
-        // Otherwise, if it's not in-bounds then we've reached the end of the 
-        // path
-        else
-        {
-            endOfPath = true;
-        }
-    }
+    
+    isClear = isClearPath(verticalModifier, horizontalModifier, from, to);
 
     return isClear;
 }
@@ -308,3 +188,65 @@ void Board::display(ostream& os)
     // Finally, print the file letters at the bottom of the board.
     os << FILE << endl;
 }
+
+
+/**
+ * Checks if there is a clear path between two squares, using the two modifier 
+ * ints to dictate the direction of the path.
+ * @param verticalModifier Controls the vertical movement of the path. -1 = up, 
+ *                         1 = down, 0 = no movement
+ * @param horizontalModifier Controls the horizontal movement of the path.
+ *                           -1 = left, 1 = right, 0 = no movement
+ * @param from The starting square on the path
+ * @param to The (potential) ending square of the path.
+ * @return True if there is a clear path between the two squares.
+ */
+bool Board::isClearPath(int verticalModifier, int horizontalModifier, 
+    Square* from, Square* to)
+    {
+        bool isClear = false;
+        bool endOfPath = false;
+        
+        // This will keep track of the square we're currently looking as we walk 
+        // the path. We'll start at the from square
+        Square* squareOnPath = from;
+        
+        // Walk along the path starting at "from" and going until either an 
+        // obstacle is found, or "to" is reached.
+        while (!endOfPath)
+        {
+            // See if moving one more square on the path would still be on the 
+            // board, if it is, then get the next square on the path.
+            if (Board::inBounds(squareOnPath->getRank() + (1 * verticalModifier),
+            squareOnPath->getFile() + (1 * horizontalModifier)))
+            {
+                squareOnPath = Board::getInstance().getSquareAt(
+                    squareOnPath->getRank() + (1 * verticalModifier),
+                    squareOnPath->getFile() + (1 * horizontalModifier));
+
+                // Check to see if this square is the one we're looking for. If it 
+                // is, then we can stop walking the path
+                if (squareOnPath == to)
+                {
+                    endOfPath = true;
+                    isClear = true;
+                }
+
+                // If it's not the one we're looking for, check to see if it's 
+                // occupied, which would mean that the path isn't clear
+                else if (squareOnPath->isOccupied())
+                {
+                    endOfPath = true;
+                }
+            }
+
+            // Otherwise, if it's not in-bounds then we've reached the end of the 
+            // path
+            else
+            {
+                endOfPath = true;
+            }
+        }
+        
+        return isClear;
+    }
