@@ -50,13 +50,13 @@ public:
     /**
      * Gets the player that is supposed to go next.
      */
-    static Player& getNextPlayer();
+    static Player* getNextPlayer();
 
     /**
      * Gets the opponent of the given player
      * @param player
      */
-    static Player& getOpponentOf(Player& player);
+    static Player* getOpponentOf(Player* player);
 
     /**
      * Gets the current player

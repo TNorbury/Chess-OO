@@ -50,19 +50,19 @@ void Game::initialize()
 }
 
 
-Player& Game::getNextPlayer()
+Player* Game::getNextPlayer()
 {
-    _currentPlayer = &getOpponentOf(*_currentPlayer);
-    return *_currentPlayer;
+    _currentPlayer = getOpponentOf(_currentPlayer);
+    return _currentPlayer;
 }
 
 
-Player& Game::getOpponentOf(Player& player)
+Player* Game::getOpponentOf(Player* player)
 {
     Player* opponent;
 
     // If the current player is white, then the opponent is black
-    if (player.getName() == _white->getName())
+    if (player->getName() == _white->getName())
     {
         opponent = _black;
     }
@@ -73,7 +73,7 @@ Player& Game::getOpponentOf(Player& player)
         opponent = _white;
     }
 
-    return *opponent;
+    return opponent;
 }
 
 

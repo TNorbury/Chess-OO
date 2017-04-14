@@ -240,8 +240,8 @@ bool Board::isClearPath(int verticalModifier, int horizontalModifier,
                 }
             }
 
-            // Otherwise, if it's not in-bounds then we've reached the end of the 
-            // path
+            // Otherwise, if it's not in-bounds then we've reached the end of 
+            // the path
             else
             {
                 endOfPath = true;

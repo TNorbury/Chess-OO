@@ -46,6 +46,6 @@ int main()
         }
 
         // Now get the next player
-        currentPlayer = &Game::getNextPlayer();
+        currentPlayer = Game::getNextPlayer();
     }
 }
