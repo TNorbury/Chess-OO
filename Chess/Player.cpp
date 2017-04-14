@@ -130,6 +130,8 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
 
 void Player::capture(Piece& piece)
 {
+    std::set<Piece*>::iterator capturedPiece;
+    
     // Put the captured piece into the captured pieces collection
     _capturedPieces.insert(&piece);
 
@@ -138,6 +140,13 @@ void Player::capture(Piece& piece)
 
     // Since a piece was captured tell the game to reset the turn counter.
     Game::resetTurnCount();
+    
+    // Finally, remove the captured from its owner's set of pieces.
+    // Start by finding the captured piece's location in the set.
+    capturedPiece = Game::getOpponentOf(this)->getPieces().find(&piece);
+    
+    // Then remove said piece from the set
+    Game::getOpponentOf(this)->getPieces().erase(capturedPiece);
 }
 
 
