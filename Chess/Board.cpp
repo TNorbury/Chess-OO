@@ -144,6 +144,8 @@ bool Board::isClearDiagonal(Square* from, Square* to)
 
 void Board::display(ostream& os)
 {
+    os << endl;
+    
     // Start by printing the file letters at the top
     os << FILE << endl;
 

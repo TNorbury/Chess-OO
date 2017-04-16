@@ -26,6 +26,8 @@ Board& Game::_board = Board::getInstance();
 set<Piece*> Game::_blackPieces;
 set<Piece*> Game::_whitePieces;
 int Game::_turnCounter = 0;
+bool Game::_drawOffered = false;
+bool Game::_drawAccepted = false;
 
 
 void Game::initialize()
@@ -116,6 +118,37 @@ bool Game::isInCheck(Player* player)
     }
     
     return inCheck;
+}
+
+
+bool Game::drawOffered()
+{
+    return _drawOffered;
+}
+
+
+bool Game::drawAccepted()
+{
+    return _drawAccepted;
+}
+
+
+void Game::offerDraw()
+{
+    _drawOffered = true;
+}
+
+
+void Game::rejectDraw()
+{
+    _drawOffered = false;
+    _drawAccepted = false;
+}
+
+
+void Game::acceptDraw()
+{
+    _drawAccepted = true;
 }
 
 /**

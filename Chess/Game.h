@@ -82,6 +82,31 @@ public:
      * @return True if the given player is in check, otherwise false.
      */
     static bool isInCheck(Player* player);
+    
+    /**
+     * @return True if a draw was offered, otherwise false
+     */
+    static bool drawOffered();
+    
+    /**
+     * @return True if the draw was accepted, otherwise false
+     */
+    static bool drawAccepted();
+    
+    /**
+     * Offer to end the game in a draw
+     */
+    static void offerDraw();
+    
+    /**
+     * Reject an offer to end the game in a draw
+     */
+    static void rejectDraw();
+    
+    /**
+     * Accept an offer to end the game in a draw
+     */
+    static void acceptDraw();
 
 private:
     static Player* _white;
@@ -91,6 +116,8 @@ private:
     static set<Piece*> _whitePieces;
     static set<Piece*> _blackPieces;
     static int _turnCounter;
+    static bool _drawOffered;
+    static bool _drawAccepted;
 
     static King* PlaceBlackPieces(Board& board);
     static King* PlaceWhitePieces(Board& board);

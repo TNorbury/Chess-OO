@@ -49,6 +49,15 @@ int main()
                     << endl << Game::getOpponentOf(currentPlayer)->getName() 
                     << " is the winner!" << endl;
             }
+            
+            // If a draw was accepted then the game is over
+            if (Game::drawAccepted())
+            {
+                validMove = true;
+                gameOver = true;
+                cout << endl << "Both players indicated that they wanted a draw"
+                << " so the game is now over with no winner" << endl;
+            }
         }
 
         if (!gameOver)
