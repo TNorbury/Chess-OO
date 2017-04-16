@@ -151,6 +151,7 @@ void Game::acceptDraw()
     _drawAccepted = true;
 }
 
+
 /**
  * Places all of the black pieces on the board in their initial state
  *
