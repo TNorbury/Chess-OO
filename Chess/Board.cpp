@@ -13,7 +13,7 @@
   * Board implementation
   */
 
-  // Initialize the board
+// Initialize the board
 Board& Board::_instance = *(new Board());
 
 Board::Board()
@@ -165,7 +165,7 @@ void Board::display(ostream& os)
             // what it's occupied by
             if (getSquareAt(i, j)->isOccupied())
             {
-                getSquareAt(i, j)->getOccupant().display(os);
+                getSquareAt(i, j)->getOccupant()->display(os);
             }
 
             // Otherwise, just print whitespace

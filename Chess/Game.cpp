@@ -104,9 +104,15 @@ bool Game::isInCheck(Player* player)
         (iter != getOpponentOf(player)->getPieces().end()) && (!inCheck); 
         ++iter)
     {
-        // If the given piece can capture the given player's king, then this 
-        // player is in check
-        inCheck = (*iter)->canMoveTo(kingLocation);
+        // Make sure that the piece is on the board (A piece may be temporarily 
+        // removed from the board, but not fully captured, in the act of moving
+        // a piece)
+        if ((*iter)->getLocation() != NULL)
+        {
+            // If the given piece can capture the given player's king, then this 
+            // player is in check
+            inCheck = (*iter)->canMoveTo(kingLocation);            
+        }
     }
     
     return inCheck;

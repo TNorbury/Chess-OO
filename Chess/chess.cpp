@@ -45,7 +45,6 @@ int main()
                 << endl;
         }
         
-
         // Check if this move put the opposing player in check. If it did, then 
         // print out a message
         if (Game::isInCheck(Game::getOpponentOf(currentPlayer)))

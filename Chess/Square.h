@@ -38,7 +38,7 @@ public:
     /**
      * @return The piece that currently occupies the square
      */
-    Piece& getOccupant();
+    Piece* getOccupant();
 
     /**
      * Sets the occupant of the square to the given piece

@@ -89,13 +89,20 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
             // Check if the source square is occupied, if it is, then see if 
             // the occupying piece can move to the destination square
             if (sourceSquare->isOccupied() && (sourceSquare->getOccupant()
-                .getColor() == _name))
+                ->getColor() == _name))
             {
                 // If the occupant can move then move it
-                if (sourceSquare->getOccupant().canMoveTo(destinationSquare))
+                if (sourceSquare->getOccupant()->canMoveTo(destinationSquare))
                 {
-                    sourceSquare->getOccupant().moveTo(destinationSquare,
-                        *this);
+                    // If this move would put the player in check, then it won't 
+                    // be done and a message will be printed
+                    if (!(sourceSquare->getOccupant()->moveTo(destinationSquare, 
+                        *this)))
+                    {
+                        cerr << endl << "This move would put you in check so it"
+                        << " won't be done" << endl;
+                        isValidMove = false;
+                    }
                 }
 
                 // Otherwise, print an error message
@@ -128,22 +135,19 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
 }
 
 
-void Player::capture(Piece& piece)
+void Player::capture(Piece* piece)
 {
     std::set<Piece*>::iterator capturedPiece;
     
     // Put the captured piece into the captured pieces collection
-    _capturedPieces.insert(&piece);
-
-    // Tell the piece that it isn't on the board anymore
-    piece.setLocation(NULL);
+    _capturedPieces.insert(piece);
 
     // Since a piece was captured tell the game to reset the turn counter.
     Game::resetTurnCount();
     
     // Finally, remove the captured from its owner's set of pieces.
     // Start by finding the captured piece's location in the set.
-    capturedPiece = Game::getOpponentOf(this)->getPieces().find(&piece);
+    capturedPiece = Game::getOpponentOf(this)->getPieces().find(piece);
     
     // Then remove said piece from the set
     Game::getOpponentOf(this)->getPieces().erase(capturedPiece);

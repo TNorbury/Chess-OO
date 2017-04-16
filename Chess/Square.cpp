@@ -36,9 +36,9 @@ bool Square::isOccupied()
 }
 
 
-Piece& Square::getOccupant()
+Piece* Square::getOccupant()
 {
-    return *_occupant;
+    return _occupant;
 }
 
 

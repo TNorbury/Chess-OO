@@ -51,7 +51,7 @@ public:
      * Capture the given piece
      * @param piece
      */
-    void capture(Piece& piece);
+    void capture(Piece* piece);
 
     /**
      * Calculate the player's current score
