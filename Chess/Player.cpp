@@ -104,6 +104,12 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
                         isValidMove = false;
                     }
                 }
+                
+                // Otherwise, if the player resigned, then the game is over
+                else if (hasResigned())
+                {
+                   
+                }
 
                 // Otherwise, print an error message
                 else
@@ -151,6 +157,17 @@ void Player::capture(Piece* piece)
     
     // Then remove said piece from the set
     Game::getOpponentOf(this)->getPieces().erase(capturedPiece);
+}
+
+
+bool Player::hasResigned()
+{
+    return _resigned;
+}
+
+void Player::resign()
+{
+    _resigned = true;
 }
 
 

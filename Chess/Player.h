@@ -58,6 +58,16 @@ public:
      * @return the score
      */
     int calculateScore();
+    
+    /**
+     * @return True if the player has resigned, otherwise false.
+     */
+    bool hasResigned();
+    
+    /**
+     * Indicates that this player wishes to resign
+     */
+    void resign();
 
     Player();
 private:
@@ -65,6 +75,7 @@ private:
     King* _king;
     set<Piece*> _pieces;
     set<Piece*> _capturedPieces;
+    bool _resigned = false;
     int parseRank(char inputCharacter, ostream& os);
     int parseFile(char inputCharacter, ostream& os);
 };

@@ -5,6 +5,8 @@
  */
 
 #include "King.h"
+#include "Game.h"
+#include "Player.h"
 #include "Square.h"
 
  /**
@@ -25,6 +27,27 @@ int King::getValue()
 {
     // King will never actually be "captured" so no need for a point value
     return 0;
+}
+
+
+bool King::canMoveTo(Square* location)
+{
+    bool canMoveTo = false;
+    
+    // If the king is attempting to move to its current location, then that 
+    // indicates a resignation
+    if (_location == location)
+    {
+        Game::getCurrentPlayer()->resign();
+    }
+    
+    // Otherwise, see if the king can move to the given location
+    else
+    {
+        canMoveTo = Piece::canMoveTo(location);
+    }
+    
+    return canMoveTo;
 }
 
 

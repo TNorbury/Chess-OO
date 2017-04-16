@@ -28,6 +28,13 @@ public:
      * @return the value of the piece
      */
     int getValue();
+    
+    /**
+     * Checks if the piece can move to the given square
+     * @param location The square that the piece is checking if it can move to
+     * @return true, if the piece can move to the given square, otherwise false
+     */
+    bool canMoveTo(Square* location);
 
     /**
      * Prints out the King
