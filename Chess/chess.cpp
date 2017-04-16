@@ -41,7 +41,7 @@ int main()
             }
             
             // Otherwise, if the player did resign, then the game is over
-            if (currentPlayer->hasResigned())
+            else if (currentPlayer->hasResigned())
             {
                 validMove = true;
                 gameOver = true;
@@ -51,7 +51,7 @@ int main()
             }
             
             // If a draw was accepted then the game is over
-            if (Game::drawAccepted())
+            else if (Game::drawAccepted())
             {
                 validMove = true;
                 gameOver = true;
