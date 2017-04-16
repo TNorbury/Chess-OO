@@ -81,7 +81,7 @@ bool Piece::moveTo(Square* location, Player& byPlayer)
     // it
     if (location->isOccupied())
     {     
-        // Make not of the piece that needs to be captured, in case we need to 
+        // Make note of the piece that needs to be captured, in case we need to 
         // reset the board in the event of a check
         toBeCaptured = location->getOccupant();
         toBeCaptured->setLocation(NULL);
