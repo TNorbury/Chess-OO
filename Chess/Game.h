@@ -1,17 +1,17 @@
 /**
  * 1851366
- * Assignment 7
- * 2017-04-13
+ * Assignment 9
+ * 2017-04-22
  */
 
 #ifndef _GAME_H
 #define _GAME_H
 
 #include <set>
-#include "Piece.h"
 #include "King.h"
-class Player;
+#include "Piece.h"
 class Board;
+class Player;
 
 // The "File" letters and their numerical (0-based) equivalent.
 #define A 0

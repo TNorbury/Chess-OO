@@ -1,13 +1,13 @@
 /**
  * 1851366
- * Assignment 7
- * 2017-04-13
+ * Assignment 9
+ * 2017-04-22
  */
 
 #include <iostream>
 #include "Board.h"
-#include "Square.h"
 #include "Piece.h"
+#include "Square.h"
 
  /**
   * Board implementation

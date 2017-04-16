@@ -1,7 +1,7 @@
 /**
  * 1851366
- * Assignment 7
- * 2017-04-13
+ * Assignment 9
+ * 2017-04-22
  */
 
 #ifndef _BISHOP_H

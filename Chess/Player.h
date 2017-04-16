@@ -1,17 +1,17 @@
 /**
  * 1851366
- * Assignment 7
- * 2017-04-13
+ * Assignment 9
+ * 2017-04-22
  */
 
 #ifndef _PLAYER_H
 #define _PLAYER_H
 
+#include <iostream>
 #include <set>
 #include <string>
-#include <iostream>
-class Piece;
 class King;
+class Piece;
 
 using namespace std;
 

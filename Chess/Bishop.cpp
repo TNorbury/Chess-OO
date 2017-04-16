@@ -1,7 +1,7 @@
 /**
  * 1851366
- * Assignment 7
- * 2017-04-13
+ * Assignment 9
+ * 2017-04-22
  */
 
 #include "Bishop.h"
@@ -12,7 +12,6 @@
   */
 
 Bishop::Bishop(Square* location, string color) : Piece(location, color) {}
-
 
 int Bishop::getValue()
 {

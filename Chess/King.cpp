@@ -1,7 +1,7 @@
 /**
  * 1851366
- * Assignment 7
- * 2017-04-13
+ * Assignment 9
+ * 2017-04-22
  */
 
 #include "King.h"
@@ -11,8 +11,8 @@
   * King implementation
   */
 
-  // From the king's current location, these are the rank/file offsets of the 
-  // squares that the king can move to.
+// From the king's current location, these are the rank/file offsets of the 
+// squares that the king can move to.
 vector<pair<int, int>> King::_movementOffsets = { {-1, -1}, {-1, 0}, {-1, 1},
 {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1} };
 

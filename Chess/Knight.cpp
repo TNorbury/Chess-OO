@@ -1,7 +1,7 @@
 /**
  * 1851366
- * Assignment 7
- * 2017-04-13
+ * Assignment 9
+ * 2017-04-22
  */
 
 #include "Knight.h"
@@ -11,8 +11,8 @@
   * Knight implementation
   */
 
-  // From the knight's current location, these are the rank/file offsets of the 
-  // squares that the knight can move to.
+// From the knight's current location, these are the rank/file offsets of the 
+// squares that the knight can move to.
 vector<pair<int, int>> Knight::_movementOffsets = { {-2, -1}, {-2, 1},
 {-1, -2}, {-1, 2}, {1, -2}, {1, 2}, {2, -1}, {2, 1} };
 

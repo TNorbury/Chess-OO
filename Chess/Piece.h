@@ -1,7 +1,7 @@
 /**
  * 1851366
- * Assignment 7
- * 2017-04-13
+ * Assignment 9
+ * 2017-04-22
  */
 
 #ifndef _PIECE_H
@@ -10,10 +10,10 @@
 #define WHITE_COLOR "White"
 #define BLACK_COLOR "Black"
 
-#include <string>
 #include <iostream>
-#include <vector>
+#include <string>
 #include <utility>
+#include <vector>
 #include "Board.h"
 class Square;
 class Player;

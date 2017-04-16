@@ -1,13 +1,13 @@
 /**
  * 1851366
- * Assignment 7
- * 2017-04-13
+ * Assignment 9
+ * 2017-04-22
  */
 
 
+#include <iostream>
 #include <set>
 #include <string>
-#include <iostream>
 #include "Board.h"
 #include "Game.h"
 #include "King.h"
@@ -158,6 +158,7 @@ int Player::calculateScore()
 {
     return 0;
 }
+
 
 Player::Player()
 {

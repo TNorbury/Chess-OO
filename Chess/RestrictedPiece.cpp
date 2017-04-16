@@ -1,14 +1,14 @@
 /**
  * 1851366
- * Assignment 7
- * 2017-04-13
+ * Assignment 9
+ * 2017-04-22
  */
 
+#include "Board.h"
+#include "Piece.h"
+#include "Player.h"
 #include "RestrictedPiece.h"
 #include "Square.h"
-#include "Player.h"
-#include "Piece.h"
-#include "Board.h"
 
  /**
   * RestrictedPiece implementation
