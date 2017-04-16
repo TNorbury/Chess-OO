@@ -65,6 +65,12 @@ public:
     bool hasResigned();
     
     /**
+     * Sets the player's check status
+     * @param inCheck The player's new check status
+     */
+    void setCheck(bool inCheck);
+    
+    /**
      * Indicates that this player wishes to resign
      */
     void resign();
@@ -76,6 +82,7 @@ private:
     set<Piece*> _pieces;
     set<Piece*> _capturedPieces;
     bool _resigned = false;
+    bool _inCheck;
     int parseRank(char inputCharacter, ostream& os);
     int parseFile(char inputCharacter, ostream& os);
 };

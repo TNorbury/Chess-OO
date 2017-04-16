@@ -67,12 +67,21 @@ int main()
                     << endl;
             }
             
-            // Check if this move put the opposing player in check. If it did, then 
-            // print out a message
+            // Check if this move put the opposing player in check. If it did, 
+            // then print out a message
             if (Game::isInCheck(Game::getOpponentOf(currentPlayer)))
             {
                 cout << endl << Game::getOpponentOf(currentPlayer)->getName() << 
                 " is now in CHECK" << endl;
+                
+                // Indicate that this player is now in check
+                Game::getOpponentOf(currentPlayer)->setCheck(true);
+            }
+            
+            // Otherwise, this player is no longer in check
+            else
+            {
+                Game::getOpponentOf(currentPlayer)->setCheck(false);
             }
 
             // Now get the next player

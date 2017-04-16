@@ -4,6 +4,7 @@
  * 2017-04-22
  */
 
+#define IN_CHECKMATE "#"
 
 #include <iostream>
 #include <set>
@@ -52,7 +53,7 @@ set<Piece*>& Player::getPieces()
 
 bool Player::makeMove(istream& is, ostream& os, ostream& err)
 {
-    bool isValidMove = true;
+    bool isValidMove;
     string input;
     int sourceRank;
     int sourceFile;
@@ -103,12 +104,18 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
                         << " won't be done" << endl;
                         isValidMove = false;
                     }
+                    
+                    // Otherwise, this is a valid move
+                    else 
+                    {
+                        isValidMove = true;
+                    }
                 }
                 
                 // Otherwise, if the player resigned, then the game is over
                 else if (hasResigned())
                 {
-                   
+                   isValidMove = true;
                 }
 
                 // Otherwise, print an error message
@@ -123,6 +130,34 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
             {
                 err << "The source square isn't occupied by a piece you own"
                     << endl;
+                isValidMove = false;
+            }
+        }
+        else
+        {
+            isValidMove = false;
+        }
+    }
+    
+    // Otherwise, if the only character entered is "#", then the player is in 
+    // checkmate
+    else if (input.length() == 1)
+    {
+        if (input == IN_CHECKMATE)
+        {
+            // If the player is currently checked, then they can declare that 
+            // they're in checkmate
+            if (_inCheck)
+            {
+                isValidMove = true;
+                resign();
+            }
+            
+            // Otherwise, print a message indicating that this move is invalid
+            else
+            {
+                cerr << "You can't indicate that you're in checkmate if you're"
+                    << " not checked" << endl;
                 isValidMove = false;
             }
         }
@@ -174,6 +209,11 @@ void Player::resign()
 int Player::calculateScore()
 {
     return 0;
+}
+
+void Player::setCheck(bool inCheck)
+{
+    _inCheck = inCheck;
 }
 
 
