@@ -75,6 +75,13 @@ public:
      * Reset the turn counter to 0
      */
     static void resetTurnCount();
+    
+    /**
+     * Checks if the given player is in check.
+     * @param player The player to check if they're in check
+     * @return True if the given player is in check, otherwise false.
+     */
+    static bool isInCheck(Player* player);
 
 private:
     static Player* _white;

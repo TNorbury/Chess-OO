@@ -94,6 +94,26 @@ void Game::resetTurnCount()
     _turnCounter = 0;
 }
 
+bool Game::isInCheck(Player* player)
+{
+    bool inCheck = false;
+    Square* kingLocation = player->getKing().getLocation();
+    
+    // Iterate through all the pieces of the given player's opponent.
+    for (auto iter = getOpponentOf(player)->getPieces().begin();
+        (iter != getOpponentOf(player)->getPieces().end()) && (!inCheck); 
+        ++iter)
+    {
+        // If the given piece can capture the given player's king, then this 
+        // player is in check
+        inCheck = (*iter)->canMoveTo(kingLocation);
+    }
+    
+    cout << inCheck << endl;
+    
+    return inCheck;
+}
+
 /**
  * Places all of the black pieces on the board in their initial state
  *

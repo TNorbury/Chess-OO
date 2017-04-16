@@ -44,6 +44,15 @@ int main()
                 << " being captured or a pawn moving, so the game is a DRAW!"
                 << endl;
         }
+        
+
+        // Check if this move put the opposing player in check. If it did, then 
+        // print out a message
+        if (Game::isInCheck(Game::getOpponentOf(currentPlayer)))
+        {
+            cout << endl << Game::getOpponentOf(currentPlayer)->getName() << 
+            " is no in CHECK" << endl;
+        }
 
         // Now get the next player
         currentPlayer = Game::getNextPlayer();
