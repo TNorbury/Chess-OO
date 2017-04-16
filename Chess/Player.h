@@ -24,7 +24,7 @@ public:
      * @param king The player's king
      * @param pieces The set of pieces owned by this player
      */
-    Player(string name, King& king, set<Piece*>& pieces);
+    Player(string name, King* king, set<Piece*>& pieces);
 
     /**
      * @return the Player's name
@@ -34,7 +34,7 @@ public:
     /**
      * @return the Player's king
      */
-    King& getKing();
+    King* getKing();
 
     /**
      * @return the Player's pieces

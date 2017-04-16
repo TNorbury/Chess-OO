@@ -51,7 +51,7 @@ int main()
         if (Game::isInCheck(Game::getOpponentOf(currentPlayer)))
         {
             cout << endl << Game::getOpponentOf(currentPlayer)->getName() << 
-            " is no in CHECK" << endl;
+            " is now in CHECK" << endl;
         }
 
         // Now get the next player

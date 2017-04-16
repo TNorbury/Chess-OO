@@ -32,8 +32,8 @@ void Game::initialize()
 {
     // Start by placing all the necessary pieces on the board.
     // Start with the black pieces, then do the white pieces.
-    King blackKing = PlaceBlackPieces(_board);
-    King whiteKing = PlaceWhitePieces(_board);
+    King* blackKing = PlaceBlackPieces(_board);
+    King* whiteKing = PlaceWhitePieces(_board);
 
     // Now create the two players, they'll just be named white and black for 
     // now
@@ -97,7 +97,7 @@ void Game::resetTurnCount()
 bool Game::isInCheck(Player* player)
 {
     bool inCheck = false;
-    Square* kingLocation = player->getKing().getLocation();
+    Square* kingLocation = player->getKing()->getLocation();
     
     // Iterate through all the pieces of the given player's opponent.
     for (auto iter = getOpponentOf(player)->getPieces().begin();
@@ -109,8 +109,6 @@ bool Game::isInCheck(Player* player)
         inCheck = (*iter)->canMoveTo(kingLocation);
     }
     
-    cout << inCheck << endl;
-    
     return inCheck;
 }
 
@@ -121,7 +119,7 @@ bool Game::isInCheck(Player* player)
  *
  * @return The black King
  */
-King& Game::PlaceBlackPieces(Board & board)
+King* Game::PlaceBlackPieces(Board & board)
 {
     // Start by creating the black king and adding it to the set of black 
     // pieces
@@ -151,7 +149,7 @@ King& Game::PlaceBlackPieces(Board & board)
         _blackPieces.insert(new Pawn(board.getSquareAt(SEVEN, i), BLACK_COLOR));
     }
 
-    return *blackKing;
+    return blackKing;
 }
 
 
@@ -162,7 +160,7 @@ King& Game::PlaceBlackPieces(Board & board)
  *
  * @return The white King
  */
-King& Game::PlaceWhitePieces(Board & board)
+King* Game::PlaceWhitePieces(Board & board)
 {
     // Start by creating the white king and adding it to the set of the white 
     // pieces
@@ -192,6 +190,6 @@ King& Game::PlaceWhitePieces(Board & board)
         _whitePieces.insert(new Pawn(board.getSquareAt(TWO, i), WHITE_COLOR));
     }
 
-    return *whiteKing;
+    return whiteKing;
 }
 

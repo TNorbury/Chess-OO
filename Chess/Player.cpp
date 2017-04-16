@@ -24,10 +24,10 @@ const int SOURCE_RANK = 1;
 const int DESTINATION_FILE = 3;
 const int DESTINATION_RANK = 4;
 
-Player::Player(string name, King& king, set<Piece*>& pieces)
+Player::Player(string name, King* king, set<Piece*>& pieces)
 {
     _name = name;
-    _king = &king;
+    _king = king;
     _pieces = pieces;
 }
 
@@ -38,9 +38,9 @@ string Player::getName()
 }
 
 
-King& Player::getKing()
+King* Player::getKing()
 {
-    return *_king;
+    return _king;
 }
 
 

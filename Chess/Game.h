@@ -92,8 +92,8 @@ private:
     static set<Piece*> _blackPieces;
     static int _turnCounter;
 
-    static King& PlaceBlackPieces(Board& board);
-    static King& PlaceWhitePieces(Board& board);
+    static King* PlaceBlackPieces(Board& board);
+    static King* PlaceWhitePieces(Board& board);
 };
 
 #endif //_GAME_H
