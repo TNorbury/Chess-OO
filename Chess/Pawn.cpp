@@ -125,7 +125,7 @@ bool Pawn::checkDiagonal(int rank, int file, Square* location)
             // there (and capture the currently occupying piece)
             diagonalValid = ((Board::getInstance().getSquareAt(rank, file)
                 ->isOccupied()) && (Board::getInstance().getSquareAt(rank, file)
-                    ->getOccupant().getColor() != _color));
+                    ->getOccupant()->getColor() != _color));
         }
     }
 
