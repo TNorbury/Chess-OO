@@ -69,7 +69,7 @@ bool Piece::canMoveTo(Square* location)
 
 bool Piece::moveTo(Square* location, Player& byPlayer)
 {
-    Piece* toBeCaptured;
+    Piece* toBeCaptured = NULL;
     bool capturedPiece = false;
     bool inCheck;
 
