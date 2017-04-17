@@ -3,11 +3,15 @@
  * Assignment 9
  * 2017-04-22
  */
+ 
+#define BOARD_TOP 0
+#define BOARD_BOTTOM 7
 
 #include "Board.h"
 #include "Game.h"
 #include "Pawn.h"
 #include "Square.h"
+#include "Queen.h"
 
  /**
   * Pawn implementation
@@ -40,39 +44,51 @@ bool Pawn::canMoveTo(Square* location)
     int rank = _location->getRank();
     int file = _location->getFile();
 
-    // Checking the square immediately in front of the pawn
-    rank = _location->getRank() + (1 * _rankModifier);
-    canMoveTo = checkFront(rank, file, location);
-
-    // Check the squares to the immediate diagonals of the pawn
-    // Only check the diagonal if the pawn hasn't found a square to move to
-    if (!canMoveTo)
+    // If the pawn isn't delegated, then check for valid movement based on pawn
+    // rules
+    if (_delegate == NULL)
     {
-        // Start by checking the left (if white, otherwise it's the right) 
-        // diagonal
+        // Checking the square immediately in front of the pawn
         rank = _location->getRank() + (1 * _rankModifier);
-        file = _location->getFile() - 1;
-        canMoveTo = checkDiagonal(rank, file, location);
-    }
-
-    // Only check the other diagonal if the pawn hasn't found a square to move 
-    // to
-    if (!canMoveTo)
-    {
-        // Now check the other diagonal (right if white, otherwise left).
-        rank = _location->getRank() + (1 * _rankModifier);
-        file = _location->getFile() + 1;
-        canMoveTo = checkDiagonal(rank, file, location);
-    }
-
-    // If the pawn hasn't moved yet and the pawn hasn't found a square then 
-    // check the square that is two squares in front of it
-    if (!hasMoved() && !canMoveTo)
-    {
-        rank = _location->getRank() + (2 * _rankModifier);
-        file = _location->getFile();
         canMoveTo = checkFront(rank, file, location);
+
+        // Check the squares to the immediate diagonals of the pawn
+        // Only check the diagonal if the pawn hasn't found a square to move to
+        if (!canMoveTo)
+        {
+            // Start by checking the left (if white, otherwise it's the right) 
+            // diagonal
+            rank = _location->getRank() + (1 * _rankModifier);
+            file = _location->getFile() - 1;
+            canMoveTo = checkDiagonal(rank, file, location);
+        }
+
+        // Only check the other diagonal if the pawn hasn't found a square to move 
+        // to
+        if (!canMoveTo)
+        {
+            // Now check the other diagonal (right if white, otherwise left).
+            rank = _location->getRank() + (1 * _rankModifier);
+            file = _location->getFile() + 1;
+            canMoveTo = checkDiagonal(rank, file, location);
+        }
+
+        // If the pawn hasn't moved yet and the pawn hasn't found a square then 
+        // check the square that is two squares in front of it
+        if (!hasMoved() && !canMoveTo)
+        {
+            rank = _location->getRank() + (2 * _rankModifier);
+            file = _location->getFile();
+            canMoveTo = checkFront(rank, file, location);
+        }
     }
+    
+    // Otherwise, defer movement checking to the delegate
+    else
+    {
+        canMoveTo = _delegate->canMoveTo(location);
+    }
+    
 
     return canMoveTo;
 }
@@ -80,11 +96,50 @@ bool Pawn::canMoveTo(Square* location)
 
 bool Pawn::moveTo(Square* location, Player& byPlayer)
 {
+    bool canMove;
+    bool endReached = false;
+    
     // Since a pawn is being moved, tell the game to reset the turn counter.
     Game::resetTurnCount();
 
     // Defer movement to RestrictedPiece
-    return RestrictedPiece::moveTo(location, byPlayer);
+    canMove = RestrictedPiece::moveTo(location, byPlayer);
+    
+    // If the move was successful and the pawn hasn't been delegated yet, see 
+    // if the pawn reached the end of the board
+    if (canMove && _delegate == NULL)
+    {
+        if (_color == WHITE_COLOR && _location->getRank() == BOARD_TOP)
+        {
+            endReached = true;
+        }
+        else if (_color == BLACK_COLOR && _location->getRank() == BOARD_BOTTOM)
+        {
+            endReached = true;
+        }
+        
+        // If the end of the board was reached, then create a new Queen 
+        // delegate
+        if (endReached)
+        {
+            _delegate = new Queen(_location, _color);
+            
+            // Tell the square that a pawn is still occupying it, not the queen
+            _location->setOccupant(this);
+            
+            cout << "Pawn was delegated!" << endl;
+        }
+        
+    }
+    
+    // Otherwise, if the move was sucessful, and the pawn has a delegate, then 
+    // also update the delegate's location
+    else if (canMove && _delegate != NULL)
+    {
+        _delegate->setLocation(location);
+    }
+    
+    return canMove;
 }
 
 

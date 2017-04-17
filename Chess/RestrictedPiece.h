@@ -27,6 +27,7 @@ public:
      * Move the piece to the given location
      * @param location The location to be moved to
      * @param byPlayer The player making the move
+     * @return True, if the piece can move to the given square, otherwise false
      */
     virtual bool moveTo(Square* location, Player& byPlayer);
 protected:

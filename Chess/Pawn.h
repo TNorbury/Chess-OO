@@ -50,7 +50,7 @@ public:
     void display(ostream& os);
 
 private:
-    Piece* delegate;
+    Piece* _delegate;
 
     // Since a pawn's movement is based upon its color, the rank movement needs
     // to be either positive (black) or negative (white) to ensure that the

@@ -107,4 +107,10 @@ int main()
             currentPlayer = Game::getNextPlayer();
         }
     }
+    
+    // Display the final scores of the chess game
+    cout << "\n" << currentPlayer->getName() << " Final Score: " 
+        << currentPlayer->calculateScore() << "\n" 
+        << Game::getOpponentOf(currentPlayer)->getName() << " Final Score: " 
+        << Game::getOpponentOf(currentPlayer)->calculateScore() << endl;
 }
