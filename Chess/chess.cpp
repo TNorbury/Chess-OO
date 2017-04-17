@@ -25,6 +25,16 @@ int main()
     while (!gameOver)
     {
         validMove = false;
+        
+        // Check if the current player is in checkmate before asking for a move
+        if (Game::isInCheckmate(currentPlayer))
+        {
+            cout << currentPlayer->getName() << " is in checkmate" << endl
+                << Game::getOpponentOf(currentPlayer)->getName() << " is the"
+                << " winner!" << endl;
+            validMove = true;
+            gameOver = true;
+        }
 
         // Try to get the current player to enter a valid move
         while (!validMove)
@@ -36,7 +46,7 @@ int main()
             if (!validMove && !currentPlayer->hasResigned())
             {
                 cerr << endl << "Input should be structured like:" << endl <<
-                    "FileRank FileRank" << endl << "Rank = 1-8. File = a-h"
+                    "RankFile RankFile" << endl << "Rank = a-h. File = 1-8"
                     << endl << endl;
             }
 

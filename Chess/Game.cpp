@@ -13,6 +13,7 @@
 #include "Piece.h"
 #include "Player.h"
 #include "Rook.h"
+#include "Square.h"
 #include "Queen.h"
 
  /**
@@ -118,6 +119,78 @@ bool Game::isInCheck(Player* player)
     }
 
     return inCheck;
+}
+
+bool Game::isInCheckmate(Player* player)
+{
+    bool inCheckmate = false;
+    Piece* toBeCaptured = NULL;
+    bool capturedPiece = false;
+    Square* originalLocation;
+    Square* destination;
+    
+    //Square* kingLocation = player->getKing()->getLocation();
+    
+    // Iterate through all the pieces of the player
+    for (auto iter = player->getPieces().begin();
+    (iter != player->getPieces().end()) && (!inCheckmate);
+        ++iter)
+    {
+        originalLocation = (*iter)->getLocation();
+        
+        // Iterate through all of the squares on the board
+        for (int rank = 0; rank < 8 && (!inCheckmate); rank++)
+        {
+            for (int file = 0; file < 8 && (!inCheckmate); file++)
+            {
+                destination = Board::getInstance().getSquareAt(rank, file);
+                
+                // Don't bother checking if a piece can move to the location it
+                // is currentlly at
+                if ((*iter)->getLocation() != destination)
+                {
+                    if ((*iter)->canMoveTo(destination))
+                    {
+                        // Temporarily move the piece, and see if that puts the
+                        // king in check. 
+                        if (destination->isOccupied())
+                        {
+                            // If the destination square is occupied remove the
+                            // occupying piece to simulate being captured.
+                            toBeCaptured = destination->getOccupant();
+                            toBeCaptured->setLocation(NULL);
+                            destination->setOccupant(NULL);
+                            capturedPiece = true;
+                        }
+                        
+                        // Move the piece temporarily to its new location.
+                        (*iter)->getLocation()->setOccupant(NULL);
+                        (*iter)->setLocation(destination);
+                        destination->setOccupant((*iter));
+                        
+                        // If this move wouldn't put the player in check, then 
+                        // it is a "safe" move
+                        inCheckmate = !(isInCheck(player));
+                        
+                        // Now "reset" the board to its state prior to moving t
+                        // he piece
+                        destination->setOccupant(NULL);
+                        
+                        if (capturedPiece)
+                        {
+                            toBeCaptured->setLocation(destination);
+                            destination->setOccupant(toBeCaptured);
+                        }
+                        
+                        (*iter)->setLocation(originalLocation);
+                        originalLocation->setOccupant((*iter));
+                    }                    
+                }
+            }
+        }
+    }
+    
+    return !inCheckmate;
 }
 
 

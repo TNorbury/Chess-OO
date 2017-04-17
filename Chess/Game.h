@@ -82,7 +82,14 @@ public:
      * @return True if the given player is in check, otherwise false.
      */
     static bool isInCheck(Player* player);
-
+    
+    /**
+     * Checks if the given player is in checkmate.
+     * @param player The player to check if they're in checkmate
+     * @return Ture if the given player is in checkmate, otherwise false.
+     */
+    static bool isInCheckmate(Player* player);
+    
     /**
      * @return True if a draw was offered, otherwise false
      */
