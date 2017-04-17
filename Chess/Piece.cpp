@@ -72,15 +72,15 @@ bool Piece::moveTo(Square* location, Player& byPlayer)
     Piece* toBeCaptured;
     bool capturedPiece = false;
     bool inCheck;
-    
+
     // Make note of this piece's original location, in case it needs to be 
     // reset.
     Square* originalLocation = _location;
-        
-    // If the square is occupied, then capture the piece that currently occupies
-    // it
+
+    // If the square is occupied, then capture the piece that currently
+    // occupies it
     if (location->isOccupied())
-    {     
+    {
         // Make note of the piece that needs to be captured, in case we need to 
         // reset the board in the event of a check
         toBeCaptured = location->getOccupant();
@@ -97,38 +97,38 @@ bool Piece::moveTo(Square* location, Player& byPlayer)
 
     // Move the piece to its new location on the board
     location->setOccupant(this);
-    
+
     // Now check if the move would put the moving player in check.
     inCheck = Game::isInCheck(&byPlayer);
-        
+
     // If the move doesn't put the moving player into check, and there is a 
-    // piece to be captured, then go ahead and capture the piece that originally
-    // occupied this square
+    // piece to be captured, then go ahead and capture the piece that 
+    // originally occupied this square
     if (!inCheck && capturedPiece)
     {
         byPlayer.capture(toBeCaptured);
     }
-    
+
     // Otherwise, if the move would put the player into check then "reset" the 
     // board to its setup before this method.
     else if (inCheck)
-    {   
+    {
         // Remove this piece from the destination location
         location->setOccupant(NULL);
-        
-        // If there was a piece occuppying the square originally, "reset" it to 
+
+        // If there was a piece occupying the square originally, "reset" it to 
         // the square
         if (capturedPiece)
         {
             toBeCaptured->setLocation(location);
             location->setOccupant(toBeCaptured);
         }
-        
+
         // Reset this piece to its original position
         setLocation(originalLocation);
         originalLocation->setOccupant(this);
     }
-    
+
     // If this move didn't put the player in check, then it was a valid move.
     return !(inCheck);
 }

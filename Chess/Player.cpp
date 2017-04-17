@@ -20,7 +20,7 @@
 
 const string IN_CHECKMATE = "#";
 const char DRAW = '=';
-  
+
 const int SOURCE_FILE = 0;
 const int SOURCE_RANK = 1;
 const int DESTINATION_FILE = 3;
@@ -97,27 +97,27 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
                 // If the occupant can move then move it
                 if (sourceSquare->getOccupant()->canMoveTo(destinationSquare))
                 {
-                    // If this move would put the player in check, then it won't 
-                    // be done and a message will be printed
-                    if (!(sourceSquare->getOccupant()->moveTo(destinationSquare, 
-                        *this)))
+                    // If this move would put the player in check, then it 
+                    // won't be done and a message will be printed
+                    if (!(sourceSquare->getOccupant()
+                        ->moveTo(destinationSquare, *this)))
                     {
                         err << endl << "This move would put you in check so it"
-                        << " won't be done" << endl;
+                            << " won't be done" << endl;
                         isValidMove = false;
                     }
-                    
+
                     // Otherwise, this is a valid move
-                    else 
+                    else
                     {
                         isValidMove = true;
                     }
                 }
-                
+
                 // Otherwise, if the player resigned, then the game is over
                 else if (hasResigned())
                 {
-                   isValidMove = true;
+                    isValidMove = true;
                 }
 
                 // Otherwise, print an error message
@@ -139,7 +139,7 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
         {
             isValidMove = false;
         }
-        
+
         // If the input was valid, and there was a 6th character at the end of 
         // the input, check if the player is offering a draw
         if (isValidMove && input.length() == 6)
@@ -151,17 +151,17 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
                 drawAccepted = true;
                 Game::offerDraw();
             }
-            
+
             // Otherwise, this input is invalid
             else
             {
-                err << endl << "The only valid character to append to a move is"
-                << " =" << endl;
+                err << endl << "The only valid character to append to a move "
+                    << "is =" << endl;
                 isValidMove = false;
             }
         }
     }
-    
+
     // Otherwise, if the only character entered is "#", then the player is in 
     // checkmate
     else if (input.length() == 1)
@@ -177,7 +177,7 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
                 isValidMove = true;
                 resign();
             }
-            
+
             // Otherwise, print a message indicating that this move is invalid
             else
             {
@@ -186,7 +186,7 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
                 isValidMove = false;
             }
         }
-        
+
         // Otherwise, if "=" is entered, then see if a draw was offered.
         else if (input[0] == DRAW)
         {
@@ -196,11 +196,11 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
             {
                 isValidMove = true;
                 drawAccepted = true;
-                
+
                 // Tell the game that the draw was accepted
                 Game::acceptDraw();
             }
-            
+
             // Otherwise, it's invalid to accepted a draw if one wasn't offered
             else
             {
@@ -208,7 +208,7 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
                 isValidMove = false;
             }
         }
-        
+
         else
         {
             isValidMove = false;
@@ -219,9 +219,9 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
         err << "Input was too short or too long" << endl;
         isValidMove = false;
     }
-    
-    // If a draw wasn't accepted, but there was an offer for a draw, then reject
-    // said offer
+
+    // If a draw wasn't accepted, but there was an offer for a draw, then 
+    // reject said offer
     if (Game::drawOffered() && !drawAccepted)
     {
         Game::rejectDraw();
@@ -234,17 +234,17 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
 void Player::capture(Piece* piece)
 {
     std::set<Piece*>::iterator capturedPiece;
-    
+
     // Put the captured piece into the captured pieces collection
     _capturedPieces.insert(piece);
 
     // Since a piece was captured tell the game to reset the turn counter.
     Game::resetTurnCount();
-    
+
     // Finally, remove the captured from its owner's set of pieces.
     // Start by finding the captured piece's location in the set.
     capturedPiece = Game::getOpponentOf(this)->getPieces().find(piece);
-    
+
     // Then remove said piece from the set
     Game::getOpponentOf(this)->getPieces().erase(capturedPiece);
 }
@@ -323,7 +323,8 @@ int Player::parseRank(char inputCharacter, ostream& os)
             rank = 0;
             break;
 
-            // If the input doesn't match any of those above, then it is invalid.
+            // If the input doesn't match any of those above, then it is 
+            // invalid.
         default:
             rank = -1;
             os << inputCharacter << " is not a valid rank!" << endl;
@@ -374,7 +375,8 @@ int Player::parseFile(char inputCharacter, ostream& os)
             file = 7;
             break;
 
-            // If the input doesn't match any of those above, then it is invalid.
+            // If the input doesn't match any of those above, then it is 
+            // invalid.
         default:
             file = -1;
             os << inputCharacter << " is not a valid file!" << endl;

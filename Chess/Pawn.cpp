@@ -124,8 +124,9 @@ bool Pawn::checkDiagonal(int rank, int file, Square* location)
             // If the square is occupied by an opponent, then the pawn can move
             // there (and capture the currently occupying piece)
             diagonalValid = ((Board::getInstance().getSquareAt(rank, file)
-                ->isOccupied()) && (Board::getInstance().getSquareAt(rank, file)
-                    ->getOccupant()->getColor() != _color));
+                ->isOccupied()) &&
+                (Board::getInstance().getSquareAt(rank, file)->getOccupant()
+                    ->getColor() != _color));
         }
     }
 

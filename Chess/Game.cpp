@@ -100,10 +100,10 @@ bool Game::isInCheck(Player* player)
 {
     bool inCheck = false;
     Square* kingLocation = player->getKing()->getLocation();
-    
+
     // Iterate through all the pieces of the given player's opponent.
     for (auto iter = getOpponentOf(player)->getPieces().begin();
-        (iter != getOpponentOf(player)->getPieces().end()) && (!inCheck); 
+    (iter != getOpponentOf(player)->getPieces().end()) && (!inCheck);
         ++iter)
     {
         // Make sure that the piece is on the board (A piece may be temporarily 
@@ -111,12 +111,12 @@ bool Game::isInCheck(Player* player)
         // a piece)
         if ((*iter)->getLocation() != NULL)
         {
-            // If the given piece can capture the given player's king, then this 
-            // player is in check
-            inCheck = (*iter)->canMoveTo(kingLocation);            
+            // If the given piece can capture the given player's king, then 
+            // this player is in check
+            inCheck = (*iter)->canMoveTo(kingLocation);
         }
     }
-    
+
     return inCheck;
 }
 
@@ -186,7 +186,8 @@ King* Game::PlaceBlackPieces(Board & board)
     // Iterate over the files for the seventh rank
     for (int i = 0; i < board.getDimensions(); i++)
     {
-        _blackPieces.insert(new Pawn(board.getSquareAt(SEVEN, i), BLACK_COLOR));
+        _blackPieces.insert(new Pawn(board.getSquareAt(SEVEN, i),
+            BLACK_COLOR));
     }
 
     return blackKing;

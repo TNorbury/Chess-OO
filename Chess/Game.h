@@ -75,34 +75,34 @@ public:
      * Reset the turn counter to 0
      */
     static void resetTurnCount();
-    
+
     /**
      * Checks if the given player is in check.
      * @param player The player to check if they're in check
      * @return True if the given player is in check, otherwise false.
      */
     static bool isInCheck(Player* player);
-    
+
     /**
      * @return True if a draw was offered, otherwise false
      */
     static bool drawOffered();
-    
+
     /**
      * @return True if the draw was accepted, otherwise false
      */
     static bool drawAccepted();
-    
+
     /**
      * Offer to end the game in a draw
      */
     static void offerDraw();
-    
+
     /**
      * Reject an offer to end the game in a draw
      */
     static void rejectDraw();
-    
+
     /**
      * Accept an offer to end the game in a draw
      */

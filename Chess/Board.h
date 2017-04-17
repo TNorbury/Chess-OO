@@ -78,9 +78,9 @@ private:
     static Board& _instance;
     Square* _boardSquares[DIMENSION][DIMENSION];
     Board();
-    
-    bool isClearPath(int verticalModifier, int horizontalModifier, Square* from,
-                    Square* to);
+
+    bool isClearPath(int verticalModifier, int horizontalModifier,
+        Square* from, Square* to);
 };
 
 #endif //_BOARD_H

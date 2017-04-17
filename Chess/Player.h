@@ -58,18 +58,18 @@ public:
      * @return the score
      */
     int calculateScore();
-    
+
     /**
      * @return True if the player has resigned, otherwise false.
      */
     bool hasResigned();
-    
+
     /**
      * Sets the player's check status
      * @param inCheck The player's new check status
      */
     void setCheck(bool inCheck);
-    
+
     /**
      * Indicates that this player wishes to resign
      */
