@@ -264,13 +264,13 @@ void Player::resign()
 int Player::calculateScore()
 {
     int score = 0;
-    
+
     // Iterate through all the pieces of the player
     for (auto iter = getPieces().begin(); iter != getPieces().end(); ++iter)
     {
         score += (*iter)->getValue();
     }
-    
+
     return score;
 }
 

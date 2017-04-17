@@ -25,7 +25,7 @@ int main()
     while (!gameOver)
     {
         validMove = false;
-        
+
         // Check if the current player is in checkmate before asking for a move
         if (Game::isInCheckmate(currentPlayer))
         {
@@ -107,10 +107,10 @@ int main()
             currentPlayer = Game::getNextPlayer();
         }
     }
-    
+
     // Display the final scores of the chess game
-    cout << "\n" << currentPlayer->getName() << " Final Score: " 
-        << currentPlayer->calculateScore() << "\n" 
-        << Game::getOpponentOf(currentPlayer)->getName() << " Final Score: " 
+    cout << "\n" << currentPlayer->getName() << " Final Score: "
+        << currentPlayer->calculateScore() << "\n"
+        << Game::getOpponentOf(currentPlayer)->getName() << " Final Score: "
         << Game::getOpponentOf(currentPlayer)->calculateScore() << endl;
 }

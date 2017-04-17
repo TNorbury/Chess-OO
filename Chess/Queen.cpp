@@ -42,7 +42,7 @@ bool Queen::canMoveTo(Square* location)
         pathClear = Board::getInstance().isClearRank(_location, location);
     }
 
-    // Otherwise, if the queen and destiation aren't on the same rank or file, 
+    // Otherwise, if the queen and destination aren't on the same rank or file, 
     // then we'll check if there is a clear diagonal path
     else
     {

@@ -3,7 +3,7 @@
  * Assignment 9
  * 2017-04-22
  */
- 
+
 #define BOARD_TOP 0
 #define BOARD_BOTTOM 7
 
@@ -63,8 +63,8 @@ bool Pawn::canMoveTo(Square* location)
             canMoveTo = checkDiagonal(rank, file, location);
         }
 
-        // Only check the other diagonal if the pawn hasn't found a square to move 
-        // to
+        // Only check the other diagonal if the pawn hasn't found a square to 
+        // move to
         if (!canMoveTo)
         {
             // Now check the other diagonal (right if white, otherwise left).
@@ -82,13 +82,13 @@ bool Pawn::canMoveTo(Square* location)
             canMoveTo = checkFront(rank, file, location);
         }
     }
-    
+
     // Otherwise, defer movement checking to the delegate
     else
     {
         canMoveTo = _delegate->canMoveTo(location);
     }
-    
+
     return canMoveTo;
 }
 
@@ -97,13 +97,13 @@ bool Pawn::moveTo(Square* location, Player& byPlayer)
 {
     bool canMove;
     bool endReached = false;
-    
+
     // Since a pawn is being moved, tell the game to reset the turn counter.
     Game::resetTurnCount();
 
     // Defer movement to RestrictedPiece
     canMove = RestrictedPiece::moveTo(location, byPlayer);
-    
+
     // If the move was successful and the pawn hasn't been delegated yet, see 
     // if the pawn reached the end of the board
     if (canMove && _delegate == NULL)
@@ -116,26 +116,26 @@ bool Pawn::moveTo(Square* location, Player& byPlayer)
         {
             endReached = true;
         }
-        
+
         // If the end of the board was reached, then create a new Queen 
         // delegate
         if (endReached)
         {
             // Create a new queen at the location of the pawn.
             _delegate = new Queen(_location, _color);
-            
+
             // Tell the square that a pawn is still occupying it, not the queen
             _location->setOccupant(this);
         }
     }
-    
-    // Otherwise, if the move was sucessful, and the pawn has a delegate, then 
+
+    // Otherwise, if the move was successful, and the pawn has a delegate, then 
     // also update the delegate's location
     else if (canMove && _delegate != NULL)
     {
         _delegate->setLocation(location);
     }
-    
+
     return canMove;
 }
 
