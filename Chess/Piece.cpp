@@ -23,6 +23,7 @@ Piece::Piece(Square * location, string color)
     _location->setOccupant(this);
 }
 
+
 string Piece::getColor()
 {
     return _color;
@@ -139,6 +140,7 @@ vector<pair<int, int>>& Piece::getMovementOffsets()
     return _movementOffsets;
 }
 
+
 /**
  * Checks if the square at the given rank and file is the same as the square
  * the piece is trying to move to, and if that square is valid to move to.
@@ -170,4 +172,3 @@ bool Piece::checkSquare(int rank, int file, Square* toMoveTo)
 
     return squareValid;
 }
-

@@ -77,6 +77,7 @@ public:
      * @param os The ostream that the piece will be output to.
      */
     virtual void display(ostream& os) = 0;
+    
 protected:
     string _color;
     Square* _location;

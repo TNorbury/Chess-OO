@@ -13,7 +13,7 @@
 class Board;
 class Player;
 
-// The "File" letters and their numerical (0-based) equivalent.
+// The "Rank" letters and their numerical (0-based) equivalent.
 #define A 0
 #define B 1
 #define C 2
@@ -23,7 +23,7 @@ class Player;
 #define G 6
 #define H 7
 
-// The "Rank" numbers and their numerical (0-based) equivalent
+// The "File" numbers and their numerical (0-based) equivalent
 #define EIGHT 0
 #define SEVEN 1
 #define SIX   2

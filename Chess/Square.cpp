@@ -54,6 +54,7 @@ bool Square::operator==(Square& otherSquare)
         && (_file == otherSquare.getFile()));
 }
 
+
 Square::Square()
 {
 }

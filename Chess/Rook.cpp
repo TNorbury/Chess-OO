@@ -59,6 +59,7 @@ bool Rook::canMoveTo(Square* location)
     return canMoveTo;
 }
 
+
 void Rook::display(ostream & os)
 {
     // Print out something different depending on the color of the piece

@@ -185,6 +185,7 @@ bool Pawn::checkDiagonal(int rank, int file, Square* location)
     return diagonalValid;
 }
 
+
 /**
 * Checks if the squares to front of the pawn are valid
 *

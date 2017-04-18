@@ -68,11 +68,11 @@ public:
      */
     bool isClearDiagonal(Square* from, Square* to);
 
-
     /**
      * @param os The output stream to output to
      */
     void display(ostream& os);
+    
 private:
     static const int DIMENSION = 8;
     static Board& _instance;

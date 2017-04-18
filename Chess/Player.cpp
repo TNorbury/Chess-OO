@@ -27,6 +27,7 @@ const int DESTINATION_FILE = 3;
 const int DESTINATION_RANK = 4;
 const int DRAW_INDEX = 5;
 
+
 Player::Player(string name, King* king, set<Piece*>& pieces)
 {
     _name = name;
@@ -255,6 +256,7 @@ bool Player::hasResigned()
     return _resigned;
 }
 
+
 void Player::resign()
 {
     _resigned = true;
@@ -274,6 +276,7 @@ int Player::calculateScore()
     return score;
 }
 
+
 void Player::setCheck(bool inCheck)
 {
     _inCheck = inCheck;
@@ -283,6 +286,7 @@ void Player::setCheck(bool inCheck)
 Player::Player()
 {
 }
+
 
 /**
  * Parse a character and find the rank that it corresponds to. The number
@@ -340,6 +344,7 @@ int Player::parseRank(char inputCharacter, ostream& os)
 
     return rank;
 }
+
 
 /**
  * Parse a character and find the file that it corresponds to. The number
