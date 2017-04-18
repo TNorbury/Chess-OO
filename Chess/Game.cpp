@@ -45,9 +45,6 @@ void Game::initialize()
     _white = new Player(WHITE_COLOR, whiteKing, _whitePieces);
     _black = new Player(BLACK_COLOR, blackKing, _blackPieces);
 
-    // Have the board display itself
-    _board.display(cout);
-
     // Start off with the current player being the white player
     _currentPlayer = _white;
 }

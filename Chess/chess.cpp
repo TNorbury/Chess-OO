@@ -35,6 +35,13 @@ int main()
             validMove = true;
             gameOver = true;
         }
+        else
+        {
+            // Since a piece was moved on the board, display it again to 
+            // reflect the changes
+            Board::getInstance().display(cout);
+            
+        }
 
         // Try to get the current player to enter a valid move
         while (!validMove)
@@ -72,9 +79,6 @@ int main()
 
         if (!gameOver)
         {
-            // Since a piece was moved on the board, display it again to 
-            // reflect the changes
-            Board::getInstance().display(cout);
 
             // Tell the game that a turn was performed. If the maximum number 
             // of turns were performed, then the game is over
