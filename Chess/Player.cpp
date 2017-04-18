@@ -118,6 +118,7 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
                 // Otherwise, if the player resigned, then the game is over
                 else if (hasResigned())
                 {
+                    // The move is valid just for the sake of ending the game
                     isValidMove = true;
                 }
 
@@ -136,6 +137,9 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
                 isValidMove = false;
             }
         }
+        
+        // Otherwise, improper rank or file was entered, meaning that this move
+        // is invalid
         else
         {
             isValidMove = false;
@@ -148,6 +152,8 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
             // If the 6th character is '=' then a draw was offered.
             if (input[DRAW_INDEX] == DRAW)
             {
+                // The draw is considered "accepted" for the sake of continuing
+                // the game
                 isValidMove = true;
                 drawAccepted = true;
                 Game::offerDraw();
@@ -191,7 +197,6 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
         // Otherwise, if "=" is entered, then see if a draw was offered.
         else if (input[0] == DRAW)
         {
-
             // If a draw was offered, then the move is valid
             if (Game::drawOffered())
             {
@@ -210,6 +215,8 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
             }
         }
 
+        // If neither of those characters were entered, then the move isn't 
+        // considered valid
         else
         {
             isValidMove = false;
@@ -285,6 +292,8 @@ void Player::setCheck(bool inCheck)
 
 Player::Player()
 {
+    // This deafault constructor exists so that the static players in Game can 
+    // be instantiated
 }
 
 
