@@ -133,17 +133,14 @@ bool Pawn::moveTo(Square* location, Player& byPlayer)
         {
             // Create a new queen at the location of the pawn.
             _delegate = new Queen(_location, _color);
-
-            // Tell the square that a pawn is still occupying it, not the queen
-            _location->setOccupant(this);
         }
     }
 
     // Otherwise, if the move was successful, and the pawn has a delegate, then 
-    // also update the delegate's location
+    // also update the pawns's location
     else if (canMove && _delegate != NULL)
     {
-        _delegate->setLocation(location);
+        setLocation(location);
     }
 
     return canMove;
