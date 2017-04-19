@@ -86,9 +86,9 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
             && (destinationRank != -1))
         {
             sourceSquare = Board::getInstance()
-                .getSquareAt(sourceRank, sourceFile);
+                ->getSquareAt(sourceRank, sourceFile);
             destinationSquare = Board::getInstance()
-                .getSquareAt(destinationRank, destinationFile);
+                ->getSquareAt(destinationRank, destinationFile);
 
             // Check if the source square is occupied, if it is, then see if 
             // the occupying piece can move to the destination square

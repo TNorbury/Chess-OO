@@ -34,14 +34,14 @@ bool Rook::canMoveTo(Square* location)
     // above/below one another
     if (_location->getFile() == location->getFile())
     {
-        pathClear = Board::getInstance().isClearFile(_location, location);
+        pathClear = Board::getInstance()->isClearFile(_location, location);
     }
 
     // Otherwise, if the piece and destination square are on the same rank, 
     // then they are to the side of one another
     else if (_location->getRank() == location->getRank())
     {
-        pathClear = Board::getInstance().isClearRank(_location, location);
+        pathClear = Board::getInstance()->isClearRank(_location, location);
     }
 
     // If neither of those are true, then we can't move to the given square

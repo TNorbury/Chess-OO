@@ -181,13 +181,13 @@ bool Pawn::checkDiagonal(int rank, int file, Square* location)
     {
         // If the diagonal square is the same as the square to check, then 
         // check if it's occupied
-        if (Board::getInstance().getSquareAt(rank, file) == location)
+        if (Board::getInstance()->getSquareAt(rank, file) == location)
         {
             // If the square is occupied by an opponent, then the pawn can move
             // there (and capture the currently occupying piece)
-            diagonalValid = ((Board::getInstance().getSquareAt(rank, file)
+            diagonalValid = ((Board::getInstance()->getSquareAt(rank, file)
                 ->isOccupied()) &&
-                (Board::getInstance().getSquareAt(rank, file)->getOccupant()
+                (Board::getInstance()->getSquareAt(rank, file)->getOccupant()
                     ->getColor() != _color));
         }
     }
@@ -213,13 +213,13 @@ bool Pawn::checkFront(int rank, int file, Square* location)
     {
         // If the square right in front of the pawn is the same as the given 
         // location, then check if it's occupied.
-        if (Board::getInstance().getSquareAt(rank, file) == location)
+        if (Board::getInstance()->getSquareAt(rank, file) == location)
         {
             // If the square isn't occupied and the path to the square is clear
             // then the pawn can move there
-            frontValid = (!Board::getInstance().getSquareAt(rank, file)
+            frontValid = (!Board::getInstance()->getSquareAt(rank, file)
                 ->isOccupied())
-                && Board::getInstance().isClearFile(_location, location);
+                && Board::getInstance()->isClearFile(_location, location);
         }
     }
 

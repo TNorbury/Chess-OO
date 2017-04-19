@@ -22,7 +22,7 @@ public:
     /**
      * @return the current board instance
      */
-    static Board& getInstance();
+    static Board* getInstance();
 
     /**
      * @return the dimensions of the board
@@ -75,7 +75,7 @@ public:
     
 private:
     static const int DIMENSION = 8;
-    static Board& _instance;
+    static Board* _instance;
     Square* _boardSquares[DIMENSION][DIMENSION];
     Board();
 

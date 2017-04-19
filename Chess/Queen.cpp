@@ -32,21 +32,21 @@ bool Queen::canMoveTo(Square* location)
     // (vertical) path is clear
     if (_location->getFile() == location->getFile())
     {
-        pathClear = Board::getInstance().isClearFile(_location, location);
+        pathClear = Board::getInstance()->isClearFile(_location, location);
     }
 
     // Otherwise, if the queen and destination are on the same rank, then check 
     // if a rank (horizontal) path is clear
     else if (_location->getRank() == location->getRank())
     {
-        pathClear = Board::getInstance().isClearRank(_location, location);
+        pathClear = Board::getInstance()->isClearRank(_location, location);
     }
 
     // Otherwise, if the queen and destination aren't on the same rank or file, 
     // then we'll check if there is a clear diagonal path
     else
     {
-        pathClear = Board::getInstance().isClearDiagonal(_location, location);
+        pathClear = Board::getInstance()->isClearDiagonal(_location, location);
     }
 
     // If there was a clear path between the queen and the destination, then 
