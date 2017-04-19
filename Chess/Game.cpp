@@ -23,7 +23,7 @@
 Player* Game::_white = new Player();
 Player* Game::_black = new Player();
 Player* Game::_currentPlayer = new Player();
-Board& Game::_board = Board::getInstance();
+Board* Game::_board = Board::getInstance();
 set<Piece*> Game::_blackPieces;
 set<Piece*> Game::_whitePieces;
 int Game::_turnCounter = 0;
@@ -35,8 +35,8 @@ void Game::initialize()
 {
     // Start by placing all the necessary pieces on the board.
     // Start with the black pieces, then do the white pieces.
-    King* blackKing = PlaceBlackPieces(_board);
-    King* whiteKing = PlaceWhitePieces(_board);
+    King* blackKing = PlaceBlackPieces(*_board);
+    King* whiteKing = PlaceWhitePieces(*_board);
 
     // Now create the two players, they'll just be named white and black for 
     // now
@@ -138,7 +138,7 @@ bool Game::isInCheckmate(Player* player)
         {
             for (int file = 0; file < 8 && (!inCheckmate); file++)
             {
-                destination = Board::getInstance().getSquareAt(rank, file);
+                destination = Board::getInstance()->getSquareAt(rank, file);
 
                 // Don't bother checking if a piece can move to the location it
                 // is currently at

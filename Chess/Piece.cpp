@@ -159,13 +159,13 @@ bool Piece::checkSquare(int rank, int file, Square* toMoveTo)
     {
         // If the square at the given rank and file is the same as the square 
         // the piece wants to move to, then check its occupancy
-        if (Board::getInstance().getSquareAt(rank, file) == toMoveTo)
+        if (Board::getInstance()->getSquareAt(rank, file) == toMoveTo)
         {
             // If the square isn't occupied OR it's occupied by an opponent's 
             // piece, then we can move there
-            squareValid = (!Board::getInstance().getSquareAt(rank, file)
+            squareValid = (!Board::getInstance()->getSquareAt(rank, file)
                 ->isOccupied()) ||
-                (Board::getInstance().getSquareAt(rank, file)->getOccupant()
+                (Board::getInstance()->getSquareAt(rank, file)->getOccupant()
                     ->getColor() != _color);
         }
     }

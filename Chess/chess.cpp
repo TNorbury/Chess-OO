@@ -39,7 +39,7 @@ int main()
         {
             // Since a piece was moved on the board, display it again to 
             // reflect the changes
-            Board::getInstance().display(cout);
+            Board::getInstance()->display(cout);
             
         }
 

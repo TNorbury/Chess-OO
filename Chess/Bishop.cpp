@@ -27,7 +27,7 @@ bool Bishop::canMoveTo(Square* location)
 
     // Determine if their is a clear path diagonally from the bishop to the 
     // destination location
-    pathClear = Board::getInstance().isClearDiagonal(_location, location);
+    pathClear = Board::getInstance()->isClearDiagonal(_location, location);
 
     // If the path to the destination square is clear, then check if it's 
     // possible to occupy said square

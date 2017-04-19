@@ -119,7 +119,7 @@ private:
     static Player* _white;
     static Player* _black;
     static Player* _currentPlayer;
-    static Board& _board;
+    static Board* _board;
     static set<Piece*> _whitePieces;
     static set<Piece*> _blackPieces;
     static int _turnCounter;

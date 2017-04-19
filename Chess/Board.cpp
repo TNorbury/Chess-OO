@@ -15,7 +15,7 @@
 
   
 // Initialize the board
-Board& Board::_instance = *(new Board());
+Board* Board::_instance = getInstance();
 
 Board::Board()
 {
@@ -29,8 +29,12 @@ Board::Board()
 }
 
 
-Board& Board::getInstance()
+Board* Board::getInstance()
 {
+    if (_instance == NULL)
+    {
+        _instance = new Board();
+    }
     return _instance;
 }
 
@@ -223,7 +227,7 @@ bool Board::isClearPath(int verticalModifier, int horizontalModifier,
         if (Board::inBounds(squareOnPath->getRank() + (1 * verticalModifier),
             squareOnPath->getFile() + (1 * horizontalModifier)))
         {
-            squareOnPath = Board::getInstance().getSquareAt(
+            squareOnPath = Board::getInstance()->getSquareAt(
                 squareOnPath->getRank() + (1 * verticalModifier),
                 squareOnPath->getFile() + (1 * horizontalModifier));
 
