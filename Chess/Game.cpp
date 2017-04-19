@@ -175,6 +175,7 @@ bool Game::isInCheckmate(Player* player)
                         {
                             toBeCaptured->setLocation(destination);
                             destination->setOccupant(toBeCaptured);
+                            capturedPiece = false;
                         }
 
                         (*iter)->setLocation(originalLocation);
