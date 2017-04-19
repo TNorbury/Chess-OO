@@ -41,13 +41,16 @@ int Pawn::getValue()
 bool Pawn::canMoveTo(Square* location)
 {
     bool canMoveTo = false;
-    int rank = _location->getRank();
-    int file = _location->getFile();
+    int rank;
+    int file;
 
     // If the pawn isn't delegated, then check for valid movement based on pawn
     // rules
     if (_delegate == NULL)
     {
+        rank = _location->getRank();
+        file = _location->getFile();
+
         // Checking the square immediately in front of the pawn
         rank = _location->getRank() + (1 * _rankModifier);
         canMoveTo = checkFront(rank, file, location);
@@ -101,8 +104,15 @@ bool Pawn::moveTo(Square* location, Player& byPlayer)
     // Since a pawn is being moved, tell the game to reset the turn counter.
     Game::resetTurnCount();
 
-    // Defer movement to RestrictedPiece
-    canMove = RestrictedPiece::moveTo(location, byPlayer);
+    if (_delegate != NULL)
+    { 
+        // Defer movement to RestrictedPiece
+        canMove = _delegate->moveTo(location, byPlayer);
+    }
+    else
+    {
+        canMove = RestrictedPiece::moveTo(location, byPlayer);
+    }
 
     // If the move was successful and the pawn hasn't been delegated yet, see 
     // if the pawn reached the end of the board
