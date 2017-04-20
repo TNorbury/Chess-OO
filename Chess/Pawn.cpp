@@ -87,7 +87,7 @@ bool Pawn::canMoveTo(Square* location)
     }
 
     // Otherwise, defer movement checking to the delegate
-    else
+    else if (_delegate != NULL && _delegate->getLocation() != NULL)
     {
         canMoveTo = _delegate->canMoveTo(location);
     }
@@ -133,14 +133,17 @@ bool Pawn::moveTo(Square* location, Player& byPlayer)
         {
             // Create a new queen at the location of the pawn.
             _delegate = new Queen(_location, _color);
+            
+            _location->setOccupant(this);
         }
     }
 
     // Otherwise, if the move was successful, and the pawn has a delegate, then 
     // also update the pawns's location
-    else if (canMove && _delegate != NULL)
+    else if (canMove)
     {
         setLocation(location);
+            _location->setOccupant(this);
     }
 
     return canMove;
@@ -149,14 +152,24 @@ bool Pawn::moveTo(Square* location, Player& byPlayer)
 
 void Pawn::display(ostream& os)
 {
-    // Print out something different depending on the color of the piece
-    if (_color == WHITE_COLOR)
+    // If the pawn has a delegate, have the delegate display itself
+    if (_delegate != NULL)
     {
-        os << WHITE_PAWN;
+        _delegate->display(os);
     }
+    
+    // Otherwise, the pawn will display itself
     else
     {
-        os << BLACK_PAWN;
+        // Print out something different depending on the color of the piece
+        if (_color == WHITE_COLOR)
+        {
+            os << WHITE_PAWN;
+        }
+        else
+        {
+            os << BLACK_PAWN;
+        }        
     }
 }
 

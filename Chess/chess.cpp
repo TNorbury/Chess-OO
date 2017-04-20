@@ -26,6 +26,10 @@ int main()
     {
         validMove = false;
 
+        // Since a piece was moved on the board, display it again to 
+        // reflect the changes
+        Board::getInstance()->display(cout);
+
         // Check if the current player is in checkmate before asking for a move
         if (Game::isInCheckmate(currentPlayer))
         {
@@ -35,12 +39,7 @@ int main()
             validMove = true;
             gameOver = true;
         }
-        else
-        {
-            // Since a piece was moved on the board, display it again to 
-            // reflect the changes
-            Board::getInstance()->display(cout);
-        }
+        
 
         // Try to get the current player to enter a valid move
         while (!validMove)
