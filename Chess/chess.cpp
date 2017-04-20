@@ -40,7 +40,6 @@ int main()
             // Since a piece was moved on the board, display it again to 
             // reflect the changes
             Board::getInstance()->display(cout);
-            
         }
 
         // Try to get the current player to enter a valid move

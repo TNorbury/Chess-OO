@@ -13,8 +13,8 @@
   * Board implementation
   */
 
-  
-// Initialize the board
+
+  // Initialize the board
 Board* Board::_instance = getInstance();
 
 Board::Board()

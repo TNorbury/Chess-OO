@@ -30,14 +30,14 @@ public:
      * @return True, if the piece can move to the given square, otherwise false
      */
     virtual bool moveTo(Square* location, Player& byPlayer);
-    
+
 protected:
 
     /**
      * @return true, if this piece has moved. Otherwise false
      */
     bool hasMoved();
-    
+
 private:
     bool _moved = false;
 };

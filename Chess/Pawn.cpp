@@ -105,7 +105,7 @@ bool Pawn::moveTo(Square* location, Player& byPlayer)
     Game::resetTurnCount();
 
     if (_delegate != NULL)
-    { 
+    {
         // Defer movement to RestrictedPiece
         canMove = _delegate->moveTo(location, byPlayer);
     }

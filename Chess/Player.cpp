@@ -137,7 +137,7 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
                 isValidMove = false;
             }
         }
-        
+
         // Otherwise, improper rank or file was entered, meaning that this move
         // is invalid
         else

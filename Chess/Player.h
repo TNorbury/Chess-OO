@@ -76,7 +76,7 @@ public:
     void resign();
 
     Player();
-    
+
 private:
     string _name;
     King* _king;
