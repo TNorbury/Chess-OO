@@ -87,7 +87,7 @@ bool Pawn::canMoveTo(Square* location)
     }
 
     // Otherwise, defer movement checking to the delegate
-    else if (_delegate != NULL && _delegate->getLocation() != NULL)
+    else if (_delegate != NULL)
     {
         canMoveTo = _delegate->canMoveTo(location);
     }
@@ -104,11 +104,13 @@ bool Pawn::moveTo(Square* location, Player& byPlayer)
     // Since a pawn is being moved, tell the game to reset the turn counter.
     Game::resetTurnCount();
 
+    // If the pawn has a delegate, then defer the movement to the delegate
     if (_delegate != NULL)
     {
-        // Defer movement to RestrictedPiece
         canMove = _delegate->moveTo(location, byPlayer);
     }
+    
+    // Otherwise, defer movement to RestrictedPiece
     else
     {
         canMove = RestrictedPiece::moveTo(location, byPlayer);
@@ -134,16 +136,19 @@ bool Pawn::moveTo(Square* location, Player& byPlayer)
             // Create a new queen at the location of the pawn.
             _delegate = new Queen(_location, _color);
             
+            // Tell the square that it's occupeid by the pawn, not the delegate
             _location->setOccupant(this);
         }
     }
 
     // Otherwise, if the move was successful, and the pawn has a delegate, then 
     // also update the pawns's location
-    else if (canMove)
+    else if (canMove && _delegate != NULL)
     {
+        // Since the pawn's delegate was able to move update the pawn's 
+        // location, and tell the square that the pawn occupies it.
         setLocation(location);
-            _location->setOccupant(this);
+        _location->setOccupant(this);
     }
 
     return canMove;
