@@ -27,6 +27,7 @@ const int DESTINATION_FILE = 3;
 const int DESTINATION_RANK = 4;
 const int DRAW_INDEX = 5;
 
+const int INVALID_RANK_FILE = -1;
 
 Player::Player(string name, King* king, set<Piece*>& pieces)
 {
@@ -82,8 +83,10 @@ bool Player::makeMove(istream& is, ostream& os, ostream& err)
 
         // If both the source and destination file and rank are valid, then get
         // the corresponding square from the board
-        if ((sourceFile != -1) && (sourceRank != -1) && (destinationFile != -1)
-            && (destinationRank != -1))
+        if ((sourceFile != INVALID_RANK_FILE) 
+            && (sourceRank != INVALID_RANK_FILE) 
+            && (destinationFile != INVALID_RANK_FILE) 
+            && (destinationRank != INVALID_RANK_FILE))
         {
             sourceSquare = Board::getInstance()
                 ->getSquareAt(sourceRank, sourceFile);
@@ -292,7 +295,7 @@ void Player::setCheck(bool inCheck)
 
 Player::Player()
 {
-    // This deafault constructor exists so that the static players in Game can 
+    // This default constructor exists so that the static players in Game can
     // be instantiated
 }
 
@@ -315,9 +318,9 @@ int Player::parseRank(char inputCharacter, ostream& os)
     switch (inputCharacter)
     {
 
-        // Since the array which represents that board is 0-based, and the top 
+        // Since the array which represents that board is 0-based, and the top
         // row is 0, the rank that the player enters will be different than the
-        // int returned by this function, though they will reference the same 
+        // int returned by this function, though they will reference the same
         // place
         case '1':
             rank = 7;
@@ -344,10 +347,10 @@ int Player::parseRank(char inputCharacter, ostream& os)
             rank = 0;
             break;
 
-            // If the input doesn't match any of those above, then it is 
+            // If the input doesn't match any of those above, then it is
             // invalid.
         default:
-            rank = -1;
+            rank = INVALID_RANK_FILE;
             os << inputCharacter << " is not a valid rank!" << endl;
     }
 
@@ -397,10 +400,10 @@ int Player::parseFile(char inputCharacter, ostream& os)
             file = 7;
             break;
 
-            // If the input doesn't match any of those above, then it is 
+            // If the input doesn't match any of those above, then it is
             // invalid.
         default:
-            file = -1;
+            file = INVALID_RANK_FILE;
             os << inputCharacter << " is not a valid file!" << endl;
     }
 

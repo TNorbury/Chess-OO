@@ -79,8 +79,8 @@ public:
     virtual void display(ostream& os) = 0;
 
 protected:
-    string _color;
     Square* _location;
+    string _color;
     vector<pair<int, int>> _movementOffsets;
 
     virtual vector<pair<int, int>>& getMovementOffsets();

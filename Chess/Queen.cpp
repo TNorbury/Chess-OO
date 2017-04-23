@@ -26,34 +26,34 @@ bool Queen::canMoveTo(Square* location)
     bool canMoveTo = false;
     bool pathClear = false;
 
-    // Start by checking if there is a clear path between the queen and the 
+    // Start by checking if there is a clear path between the queen and the
     // destination location.
-    // If the queen and destination are on the same file, then check if a file 
+    // If the queen and destination are on the same file, then check if a file
     // (vertical) path is clear
     if (_location->getFile() == location->getFile())
     {
         pathClear = Board::getInstance()->isClearFile(_location, location);
     }
 
-    // Otherwise, if the queen and destination are on the same rank, then check 
+    // Otherwise, if the queen and destination are on the same rank, then check
     // if a rank (horizontal) path is clear
     else if (_location->getRank() == location->getRank())
     {
         pathClear = Board::getInstance()->isClearRank(_location, location);
     }
 
-    // Otherwise, if the queen and destination aren't on the same rank or file, 
+    // Otherwise, if the queen and destination aren't on the same rank or file,
     // then we'll check if there is a clear diagonal path
     else
     {
         pathClear = Board::getInstance()->isClearDiagonal(_location, location);
     }
 
-    // If there was a clear path between the queen and the destination, then 
+    // If there was a clear path between the queen and the destination, then
     // check if the queen can occupy the square
     if (pathClear)
     {
-        // If the square isn't occupied, or it's occupied by an opponent's 
+        // If the square isn't occupied, or it's occupied by an opponent's
         // piece, then we can move to that square
         canMoveTo = (!location->isOccupied())
             || (location->getOccupant()->getColor() != _color);

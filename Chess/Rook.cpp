@@ -28,16 +28,16 @@ bool Rook::canMoveTo(Square* location)
     bool pathClear = false;
     bool canMoveTo = false;
 
-    // Determine if the destination square is to the side, or above/below the 
+    // Determine if the destination square is to the side, or above/below the
     // current piece
-    // If the piece and destination square are on the same file, then they are 
+    // If the piece and destination square are on the same file, then they are
     // above/below one another
     if (_location->getFile() == location->getFile())
     {
         pathClear = Board::getInstance()->isClearFile(_location, location);
     }
 
-    // Otherwise, if the piece and destination square are on the same rank, 
+    // Otherwise, if the piece and destination square are on the same rank,
     // then they are to the side of one another
     else if (_location->getRank() == location->getRank())
     {
@@ -50,7 +50,7 @@ bool Rook::canMoveTo(Square* location)
     // move onto the destination square
     if (pathClear)
     {
-        // If the square isn't occupied, or it's occupied by an opponent's 
+        // If the square isn't occupied, or it's occupied by an opponent's
         // piece, then we can move there
         canMoveTo = (!location->isOccupied()) ||
             (location->getOccupant()->getColor() != _color);

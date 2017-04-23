@@ -12,7 +12,7 @@
   */
 
 
-  // From the knight's current location, these are the rank/file offsets of the 
+  // From the knight's current location, these are the rank/file offsets of the
   // squares that the knight can move to.
 vector<pair<int, int>> Knight::_movementOffsets = { {-2, -1}, {-2, 1},
 {-1, -2}, {-1, 2}, {1, -2}, {1, 2}, {2, -1}, {2, 1} };

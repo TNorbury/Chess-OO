@@ -38,7 +38,7 @@ void Game::initialize()
     King* blackKing = PlaceBlackPieces(*_board);
     King* whiteKing = PlaceWhitePieces(*_board);
 
-    // Now create the two players, they'll just be named white and black for 
+    // Now create the two players, they'll just be named white and black for
     // now
     delete _white;
     delete _black;
@@ -104,12 +104,12 @@ bool Game::isInCheck(Player* player)
     (iter != getOpponentOf(player)->getPieces().end()) && (!inCheck);
         ++iter)
     {
-        // Make sure that the piece is on the board (A piece may be temporarily 
+        // Make sure that the piece is on the board (A piece may be temporarily
         // removed from the board, but not fully captured, in the act of moving
         // a piece)
         if ((*iter)->getLocation() != NULL)
         {
-            // If the given piece can capture the given player's king, then 
+            // If the given piece can capture the given player's king, then
             // this player is in check
             inCheck = (*iter)->canMoveTo(kingLocation);
         }
@@ -147,7 +147,7 @@ bool Game::isInCheckmate(Player* player)
                     if ((*iter)->canMoveTo(destination))
                     {
                         // Temporarily move the piece, and see if that puts the
-                        // king in check. 
+                        // king in check.
                         if (destination->isOccupied())
                         {
                             // If the destination square is occupied remove the
@@ -163,11 +163,11 @@ bool Game::isInCheckmate(Player* player)
                         (*iter)->setLocation(destination);
                         destination->setOccupant((*iter));
 
-                        // If this move wouldn't put the player in check, then 
+                        // If this move wouldn't put the player in check, then
                         // it is a "safe" move
                         inCheckmate = !(isInCheck(player));
 
-                        // Now "reset" the board to its state prior to moving 
+                        // Now "reset" the board to its state prior to moving
                         // the piece
                         destination->setOccupant(NULL);
 
@@ -230,7 +230,7 @@ void Game::acceptDraw()
  */
 King* Game::PlaceBlackPieces(Board & board)
 {
-    // Start by creating the black king and adding it to the set of black 
+    // Start by creating the black king and adding it to the set of black
     // pieces
     King* blackKing = new King(board.getSquareAt(EIGHT, E), BLACK_COLOR);
     _blackPieces.insert(blackKing);
@@ -272,7 +272,7 @@ King* Game::PlaceBlackPieces(Board & board)
  */
 King* Game::PlaceWhitePieces(Board & board)
 {
-    // Start by creating the white king and adding it to the set of the white 
+    // Start by creating the white king and adding it to the set of the white
     // pieces
     King* whiteKing = new King(board.getSquareAt(ONE, E), WHITE_COLOR);
     _whitePieces.insert(whiteKing);

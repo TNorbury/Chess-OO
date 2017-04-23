@@ -20,13 +20,13 @@ int main()
     // Get the current player.
     Player* currentPlayer = Game::getCurrentPlayer();
 
-    // While the game is not over, continue to alternate players and process 
+    // While the game is not over, continue to alternate players and process
     // their input
     while (!gameOver)
     {
         validMove = false;
 
-        // Since a piece was moved on the board, display it again to 
+        // Since a piece was moved on the board, display it again to
         // reflect the changes
         Board::getInstance()->display(cout);
 
@@ -39,14 +39,14 @@ int main()
             validMove = true;
             gameOver = true;
         }
-        
+
 
         // Try to get the current player to enter a valid move
         while (!validMove)
         {
             validMove = currentPlayer->makeMove(cin, cout, cerr);
 
-            // If the move wasn't valid, but the current player didn't resign, 
+            // If the move wasn't valid, but the current player didn't resign,
             // then print out an error message
             if (!validMove && !currentPlayer->hasResigned())
             {
@@ -78,7 +78,7 @@ int main()
         if (!gameOver)
         {
 
-            // Tell the game that a turn was performed. If the maximum number 
+            // Tell the game that a turn was performed. If the maximum number
             // of turns were performed, then the game is over
             if (Game::turnPerformed())
             {
@@ -88,7 +88,7 @@ int main()
                     << "a DRAW!" << endl;
             }
 
-            // Check if this move put the opposing player in check. If it did, 
+            // Check if this move put the opposing player in check. If it did,
             // then print out a message
             if (Game::isInCheck(Game::getOpponentOf(currentPlayer)))
             {

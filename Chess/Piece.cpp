@@ -14,7 +14,8 @@
   * Piece implementation
   */
 
-Piece::Piece(Square * location, string color)
+Piece::Piece(Square * location, string color) 
+    : _location(location), _color(color)
 {
     _location = location;
     _color = color;
@@ -55,7 +56,7 @@ bool Piece::canMoveTo(Square* location)
     // Get the movement offsets of this piece
     vector<pair<int, int>> movementOffsets = getMovementOffsets();
 
-    // Iterate over each pair in the vector, checking each offset until either 
+    // Iterate over each pair in the vector, checking each offset until either
     // a valid square is found, or all offsets have been checked.
     for (auto iter = movementOffsets.begin(); iter != movementOffsets.end()
         && !canMoveTo; ++iter)
@@ -74,7 +75,7 @@ bool Piece::moveTo(Square* location, Player& byPlayer)
     bool capturedPiece = false;
     bool inCheck;
 
-    // Make note of this piece's original location, in case it needs to be 
+    // Make note of this piece's original location, in case it needs to be
     // reset.
     Square* originalLocation = _location;
 
@@ -82,7 +83,7 @@ bool Piece::moveTo(Square* location, Player& byPlayer)
     // occupies it
     if (location->isOccupied())
     {
-        // Make note of the piece that needs to be captured, in case we need to 
+        // Make note of the piece that needs to be captured, in case we need to
         // reset the board in the event of a check
         toBeCaptured = location->getOccupant();
         toBeCaptured->setLocation(NULL);
@@ -102,22 +103,22 @@ bool Piece::moveTo(Square* location, Player& byPlayer)
     // Now check if the move would put the moving player in check.
     inCheck = Game::isInCheck(&byPlayer);
 
-    // If the move doesn't put the moving player into check, and there is a 
-    // piece to be captured, then go ahead and capture the piece that 
+    // If the move doesn't put the moving player into check, and there is a
+    // piece to be captured, then go ahead and capture the piece that
     // originally occupied this square
     if (!inCheck && capturedPiece)
     {
         byPlayer.capture(toBeCaptured);
     }
 
-    // Otherwise, if the move would put the player into check then "reset" the 
+    // Otherwise, if the move would put the player into check then "reset" the
     // board to its setup before this method.
     else if (inCheck)
     {
         // Remove this piece from the destination location
         location->setOccupant(NULL);
 
-        // If there was a piece occupying the square originally, "reset" it to 
+        // If there was a piece occupying the square originally, "reset" it to
         // the square
         if (capturedPiece)
         {
@@ -157,11 +158,11 @@ bool Piece::checkSquare(int rank, int file, Square* toMoveTo)
     // Make sure that the given rank and file is in bounds
     if (Board::inBounds(rank, file))
     {
-        // If the square at the given rank and file is the same as the square 
+        // If the square at the given rank and file is the same as the square
         // the piece wants to move to, then check its occupancy
         if (Board::getInstance()->getSquareAt(rank, file) == toMoveTo)
         {
-            // If the square isn't occupied OR it's occupied by an opponent's 
+            // If the square isn't occupied OR it's occupied by an opponent's
             // piece, then we can move there
             squareValid = (!Board::getInstance()->getSquareAt(rank, file)
                 ->isOccupied()) ||

@@ -63,7 +63,7 @@ bool Board::isClearRank(Square* from, Square* to)
     bool isClear = false;
     int horizontalModifier;
 
-    // Set the horizontal modifier depending on if the destination square is 
+    // Set the horizontal modifier depending on if the destination square is
     // to the left or right of the source square
     // If "from" is to the right of "to" then we need to move to the left.
     if (from->getFile() > to->getFile())
@@ -89,7 +89,7 @@ bool Board::isClearFile(Square* from, Square* to)
     bool isClear = false;
     int verticalModifier;
 
-    // Set the vertical modifier depending on if the destination square is 
+    // Set the vertical modifier depending on if the destination square is
     // above or below the source square
     // If from is below to, then we need to move up
     if (from->getRank() > to->getRank())
@@ -115,7 +115,7 @@ bool Board::isClearDiagonal(Square* from, Square* to)
     int verticalModifier;
     int horizontalModifier;
 
-    // Set the vertical and horizontal modifiers depending on where "to" is in 
+    // Set the vertical and horizontal modifiers depending on where "to" is in
     // relation to "from"
     // If "from" is below "to", then we need to move up
     if (from->getRank() > to->getRank())
@@ -214,15 +214,15 @@ bool Board::isClearPath(int verticalModifier, int horizontalModifier,
     bool isClear = false;
     bool endOfPath = false;
 
-    // This will keep track of the square we're currently looking as we walk 
+    // This will keep track of the square we're currently looking as we walk
     // the path. We'll start at the from square
     Square* squareOnPath = from;
 
-    // Walk along the path starting at "from" and going until either an 
+    // Walk along the path starting at "from" and going until either an
     // obstacle is found, or "to" is reached.
     while (!endOfPath)
     {
-        // See if moving one more square on the path would still be on the 
+        // See if moving one more square on the path would still be on the
         // board, if it is, then get the next square on the path.
         if (Board::inBounds(squareOnPath->getRank() + (1 * verticalModifier),
             squareOnPath->getFile() + (1 * horizontalModifier)))
@@ -231,7 +231,7 @@ bool Board::isClearPath(int verticalModifier, int horizontalModifier,
                 squareOnPath->getRank() + (1 * verticalModifier),
                 squareOnPath->getFile() + (1 * horizontalModifier));
 
-            // Check to see if this square is the one we're looking for. If it 
+            // Check to see if this square is the one we're looking for. If it
             // is, then we can stop walking the path
             if (squareOnPath == to)
             {
@@ -239,7 +239,7 @@ bool Board::isClearPath(int verticalModifier, int horizontalModifier,
                 isClear = true;
             }
 
-            // If it's not the one we're looking for, check to see if it's 
+            // If it's not the one we're looking for, check to see if it's
             // occupied, which would mean that the path isn't clear
             else if (squareOnPath->isOccupied())
             {
@@ -247,7 +247,7 @@ bool Board::isClearPath(int verticalModifier, int horizontalModifier,
             }
         }
 
-        // Otherwise, if it's not in-bounds then we've reached the end of 
+        // Otherwise, if it's not in-bounds then we've reached the end of
         // the path
         else
         {

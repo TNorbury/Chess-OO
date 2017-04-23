@@ -14,7 +14,7 @@
   */
 
 
-  // From the king's current location, these are the rank/file offsets of the 
+  // From the king's current location, these are the rank/file offsets of the
   // squares that the king can move to.
 vector<pair<int, int>> King::_movementOffsets = { {-1, -1}, {-1, 0}, {-1, 1},
 {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1} };
