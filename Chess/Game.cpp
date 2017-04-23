@@ -20,8 +20,8 @@
   * Game implementation
   */
 
-Player* Game::_white = new Player();
-Player* Game::_black = new Player();
+Player* Game::_white = NULL;
+Player* Game::_black = NULL;
 Player* Game::_currentPlayer = new Player();
 Board* Game::_board = Board::getInstance();
 set<Piece*> Game::_blackPieces;
@@ -33,15 +33,71 @@ bool Game::_drawAccepted = false;
 
 void Game::initialize()
 {
-    // Start by placing all the necessary pieces on the board.
-    // Start with the black pieces, then do the white pieces.
-    King* blackKing = PlaceBlackPieces(*_board);
-    King* whiteKing = PlaceWhitePieces(*_board);
+    // Start by creating the black and white kings
+    King* blackKing = NULL;
+    King* whiteKing = NULL;
 
-    // Now create the two players, they'll just be named white and black for
-    // now
-    delete _white;
-    delete _black;
+
+    // Iterate across the length of the board, putting the pieces in the
+    // correct positions
+    for (int i = 0; i < _board->getDimensions(); i++)
+    {
+        // Place the rooks
+        if (i == A || i == H)
+        {
+            _blackPieces.insert(new Rook(_board->getSquareAt(EIGHT, i),
+                BLACK_COLOR));
+            _whitePieces.insert(new Rook(_board->getSquareAt(ONE, i),
+                WHITE_COLOR));
+        }
+
+        // Place the Knights
+        else if (i == B || i == G)
+        {
+            _blackPieces.insert(new Knight(_board->getSquareAt(EIGHT, i),
+                BLACK_COLOR));
+            _whitePieces.insert(new Knight(_board->getSquareAt(ONE, i),
+                WHITE_COLOR));
+        }
+
+        // Place the bishops
+        else if (i == C || i == F)
+        {
+            _blackPieces.insert(new Bishop(_board->getSquareAt(EIGHT, i),
+                BLACK_COLOR));
+            _whitePieces.insert(new Bishop(_board->getSquareAt(ONE, i),
+                WHITE_COLOR));
+        }
+
+        // Place the Queens
+        else if (i == D)
+        {
+            _blackPieces.insert(new Queen(_board->getSquareAt(EIGHT, i),
+                BLACK_COLOR));
+            _whitePieces.insert(new Queen(_board->getSquareAt(ONE, i),
+                WHITE_COLOR));
+        }
+
+        // Place the kings
+        else if (i == E)
+        {
+            // Create the king objects
+            blackKing = new King(_board->getSquareAt(EIGHT, i), BLACK_COLOR);
+            whiteKing = new King(_board->getSquareAt(ONE, i), WHITE_COLOR);
+
+            // Now insert the kings into the collection
+            _blackPieces.insert(blackKing);
+            _whitePieces.insert(whiteKing);
+        }
+
+        // Place the pawns
+        _blackPieces.insert(new Pawn(_board->getSquareAt(SEVEN, i),
+            BLACK_COLOR));
+        _whitePieces.insert(new Pawn(_board->getSquareAt(TWO, i),
+            WHITE_COLOR));
+    }
+
+    // Now create the two players.
     _white = new Player(WHITE_COLOR, whiteKing, _whitePieces);
     _black = new Player(BLACK_COLOR, blackKing, _blackPieces);
 
@@ -219,87 +275,3 @@ void Game::acceptDraw()
 {
     _drawAccepted = true;
 }
-
-
-/**
- * Places all of the black pieces on the board in their initial state
- *
- * @param board The board where the pieces will be placed
- *
- * @return The black King
- */
-King* Game::PlaceBlackPieces(Board & board)
-{
-    // Start by creating the black king and adding it to the set of black
-    // pieces
-    King* blackKing = new King(board.getSquareAt(EIGHT, E), BLACK_COLOR);
-    _blackPieces.insert(blackKing);
-
-    // Now create the rest of the black pieces
-    // Queen
-    _blackPieces.insert(new Queen(board.getSquareAt(EIGHT, D), BLACK_COLOR));
-
-    // Bishops
-    _blackPieces.insert(new Bishop(board.getSquareAt(EIGHT, C), BLACK_COLOR));
-    _blackPieces.insert(new Bishop(board.getSquareAt(EIGHT, F), BLACK_COLOR));
-
-    // Knights
-    _blackPieces.insert(new Knight(board.getSquareAt(EIGHT, B), BLACK_COLOR));
-    _blackPieces.insert(new Knight(board.getSquareAt(EIGHT, G), BLACK_COLOR));
-
-    // Rooks
-    _blackPieces.insert(new Rook(board.getSquareAt(EIGHT, A), BLACK_COLOR));
-    _blackPieces.insert(new Rook(board.getSquareAt(EIGHT, H), BLACK_COLOR));
-
-    // Pawns
-    // Iterate over the files for the seventh rank
-    for (int i = 0; i < board.getDimensions(); i++)
-    {
-        _blackPieces.insert(new Pawn(board.getSquareAt(SEVEN, i),
-            BLACK_COLOR));
-    }
-
-    return blackKing;
-}
-
-
-/**
- * Places all of the white pieces on the board in their initial state
- *
- * @param board The board where the pieces will be placed
- *
- * @return The white King
- */
-King* Game::PlaceWhitePieces(Board & board)
-{
-    // Start by creating the white king and adding it to the set of the white
-    // pieces
-    King* whiteKing = new King(board.getSquareAt(ONE, E), WHITE_COLOR);
-    _whitePieces.insert(whiteKing);
-
-    // Now create the rest of the white pieces
-    // Queen
-    _whitePieces.insert(new Queen(board.getSquareAt(ONE, D), WHITE_COLOR));
-
-    // Bishops
-    _whitePieces.insert(new Bishop(board.getSquareAt(ONE, C), WHITE_COLOR));
-    _whitePieces.insert(new Bishop(board.getSquareAt(ONE, F), WHITE_COLOR));
-
-    // Knights
-    _whitePieces.insert(new Knight(board.getSquareAt(ONE, B), WHITE_COLOR));
-    _whitePieces.insert(new Knight(board.getSquareAt(ONE, G), WHITE_COLOR));
-
-    // Rooks
-    _whitePieces.insert(new Rook(board.getSquareAt(ONE, A), WHITE_COLOR));
-    _whitePieces.insert(new Rook(board.getSquareAt(ONE, H), WHITE_COLOR));
-
-    // Pawns
-    // Iterate over the files for the second rank
-    for (int i = 0; i < board.getDimensions(); i++)
-    {
-        _whitePieces.insert(new Pawn(board.getSquareAt(TWO, i), WHITE_COLOR));
-    }
-
-    return whiteKing;
-}
-

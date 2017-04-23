@@ -125,9 +125,6 @@ private:
     static int _turnCounter;
     static bool _drawOffered;
     static bool _drawAccepted;
-
-    static King* PlaceBlackPieces(Board& board);
-    static King* PlaceWhitePieces(Board& board);
 };
 
 #endif //_GAME_H
